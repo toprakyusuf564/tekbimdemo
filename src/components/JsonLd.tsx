@@ -1,5 +1,6 @@
 // JSON-LD çıktısı. "<" karakteri XSS'e karşı unicode karşılığıyla değiştirilir.
-export default function JsonLd({ data }: { data: object }) {
+export default function JsonLd({ data }: { data: object | null }) {
+  if (!data) return null;
   return (
     <script
       type="application/ld+json"

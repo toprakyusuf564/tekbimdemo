@@ -1,5 +1,9 @@
 // Firma bilgileri — tek kaynak. Kaynak: tekbim.net (yazım hataları düzeltilmiş)
 
+// formtakip.net protokolü tek yerden yönetilir (https desteğini Yusuf doğrulayacak; ONAY_LISTESI.md #12)
+const FORMTAKIP_PROTOCOL = "https";
+const formtakipBase = `${FORMTAKIP_PROTOCOL}://formtakip.net`;
+
 export const site = {
   name: "Tekbim Bilgisayar",
   shortName: "Tekbim",
@@ -35,7 +39,11 @@ export const site = {
   serviceRequestHref: "/iletisim#servis-talebi",
   remoteSupportUrl: "https://anydesk.com/tr/downloads/windows",
   // Servis takip sistemi (Tekbim markası)
-  serviceTrackUrl: "https://formtakip.net",
+  serviceTrack: {
+    home: formtakipBase,
+    query: `${formtakipBase}/default.asp`, // Cihaz durumu sorgulama
+    corporate: `${formtakipBase}/yetkili.asp`, // Kurumsal giriş
+  },
   // Logo dosyası gelene kadar metin logo kullanılır (public/logo/ altına konacak)
   logo: null as string | null,
 } as const;

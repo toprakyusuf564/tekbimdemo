@@ -68,7 +68,7 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a className={linkClass} href={site.serviceTrackUrl} target="_blank" rel="noopener noreferrer">
+              <a className={linkClass} href={site.serviceTrack.home} target="_blank" rel="noopener noreferrer">
                 Servis takip (formtakip.net)
               </a>
             </li>

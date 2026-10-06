@@ -72,12 +72,17 @@ export function serviceJsonLd(opts: { name: string; description: string; path: s
   };
 }
 
-// SSS bölümleri için FAQPage
-export function faqJsonLd(items: { question: string; answer: string }[]) {
+// SSS girdisi. approved: false olanlar sayfada etiketli görünür ama yapısal veriye girmez.
+export type FaqEntry = { question: string; answer: string; approved: boolean };
+
+// SSS bölümleri için FAQPage. Yalnızca onaylı sorular dahil edilir; hiç yoksa null döner.
+export function faqJsonLd(items: FaqEntry[]) {
+  const approved = items.filter((i) => i.approved);
+  if (approved.length === 0) return null;
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: items.map((i) => ({
+    mainEntity: approved.map((i) => ({
       "@type": "Question",
       name: i.question,
       acceptedAnswer: { "@type": "Answer", text: i.answer },

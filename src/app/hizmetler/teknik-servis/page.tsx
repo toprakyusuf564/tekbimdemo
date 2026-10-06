@@ -16,43 +16,49 @@ const path = "/hizmetler/teknik-servis";
 export const metadata = buildMetadata({
   title: "Aydın / Efeler Notebook ve Bilgisayar Tamiri | Tekbim",
   description:
-    "Efeler/Aydın’da notebook ve masaüstü bilgisayar tamiri, arıza tespiti, yazılım kurulumu ve kurumsal teknik servis. 1994’ten beri Tekbim Bilgisayar.",
+    "Efeler/Aydın'da notebook ve masaüstü bilgisayar tamiri, arıza tespiti, yazılım kurulumu ve kurumsal teknik servis. 1994'ten beri Tekbim Bilgisayar.",
   path,
 });
 
-// [ONAY BEKLİYOR] işaretli yanıtlar ONAY_LISTESI.md #10 ve #11'de takip edilir
+// approved: false olanlar ONAY_LISTESI.md #10 ve #11'de takip edilir; JSON-LD'ye girmez
 const faqItems: FaqItem[] = [
   {
     question: "Arıza tespiti ücretli mi?",
-    answer: "[ONAY BEKLİYOR] Arıza tespiti ücreti konusunda net bilgi için bizi arayabilirsiniz.",
+    approved: false,
+    answer: "Arıza tespiti ücreti konusunda net bilgi için bizi arayabilirsiniz.",
     action: { label: "Bizi arayın", href: `tel:${site.phone.tel}` },
   },
   {
     question: "Onarım ne kadar sürer?",
+    approved: true,
     answer:
       "Süre arızanın türüne ve gerekli parçaya göre değişir. Arıza tespitinden sonra süreç hakkında size bilgi veririz.",
   },
   {
     question: "Cihazımın durumunu nasıl takip ederim?",
-    answer: "Servisteki cihazınızın durumunu Tekbim’in online takip sistemi formtakip.net üzerinden sorgulayabilirsiniz.",
-    action: { label: "formtakip.net", href: site.serviceTrackUrl },
+    approved: true,
+    answer: "Servisteki cihazınızın durumunu Tekbim'in online takip sistemi formtakip.net üzerinden sorgulayabilirsiniz.",
+    action: { label: "Cihazımı sorgula", href: site.serviceTrack.query },
   },
   {
     question: "Uzaktan destek veriyor musunuz?",
+    approved: true,
     answer:
       "Uygun sorunlarda AnyDesk ile bilgisayarınıza uzaktan bağlanarak destek verebiliriz. Önce bizi arayın, size yol gösterelim.",
-    action: { label: "AnyDesk’i indirin", href: site.remoteSupportUrl },
+    action: { label: "AnyDesk'i indirin", href: site.remoteSupportUrl },
   },
   {
     question: "İşletmeme yerinde servis veriyor musunuz?",
+    approved: true,
     answer:
       "Bakım anlaşması bulunan firmalarımıza işletmelerinde destek veriyoruz. Ayrıntılar için bakım anlaşmaları sayfasına bakabilirsiniz.",
     action: { label: "Bakım anlaşmaları", href: "/bakim-anlasmalari" },
   },
   {
     question: "Onarım öncesi onayım alınıyor mu?",
+    approved: false,
     answer:
-      "[ONAY BEKLİYOR] Süreç adımlarımızda onarım, sizin onayınızla başlar; işleyişin ayrıntısı için bizi arayabilirsiniz.",
+      "Süreç adımlarımızda onarım, sizin onayınızla başlar; işleyişin ayrıntısı için bizi arayabilirsiniz.",
   },
 ];
 
@@ -89,14 +95,15 @@ export default function TeknikServisPage() {
           id="servis-takip"
           eyebrow="Servis takibi"
           title="Cihazınızı online takip edin"
-          description="formtakip.net, Tekbim’in kendi online takip sistemidir."
+          description="formtakip.net, Tekbim'in kendi online takip sistemidir."
         />
         <ul className="mt-6 list-disc space-y-1 pl-5 text-muted">
-          <li>Servisteki cihazınızın durumunu sorgulayabilirsiniz.</li>
-          <li>Kurumsal müşteriler için kurumsal giriş bulunur.</li>
+          <li>Cihaz durumu sorgulama ile servisteki cihazınızın durumunu görebilirsiniz.</li>
+          <li>Kurumsal giriş ile kurumsal müşteriler kendi hesaplarına ulaşır.</li>
         </ul>
-        <div className="mt-6">
-          <ButtonLink href={site.serviceTrackUrl} variant="secondary">formtakip.net’e git</ButtonLink>
+        <div className="mt-6 flex flex-wrap gap-3">
+          <ButtonLink href={site.serviceTrack.query} variant="secondary">Cihazımı sorgula</ButtonLink>
+          <ButtonLink href={site.serviceTrack.corporate} variant="secondary">Kurumsal giriş</ButtonLink>
         </div>
       </Section>
 
@@ -105,7 +112,7 @@ export default function TeknikServisPage() {
           id="bakim"
           eyebrow="Kurumsal müşteriler"
           title="Bakım anlaşmasıyla yanınızdayız"
-          description="Bakım anlaşması bulunan müşterilerimiz kendi arıza kayıtlarını web servis üzerinden oluşturabilir."
+          description="Bakım anlaşmalı müşterilerimiz web servis üzerinden kendi arıza kaydını oluşturabilir; kayıt sistemimize otomatik düşer. Bakım anlaşmasından yararlananlar web servisi ücretsiz kullanabilir."
         />
         <div className="mt-6">
           <ButtonLink href="/bakim-anlasmalari" variant="secondary">Bakım anlaşmalarını inceleyin</ButtonLink>
@@ -125,11 +132,11 @@ export default function TeknikServisPage() {
         data={serviceJsonLd({
           name: "Notebook ve bilgisayar teknik servisi",
           description:
-            "Efeler/Aydın’da notebook ve masaüstü bilgisayar onarımı, arıza tespiti, yazılım kurulumu ve kurumsal teknik servis.",
+            "Efeler/Aydın'da notebook ve masaüstü bilgisayar onarımı, arıza tespiti, yazılım kurulumu ve kurumsal teknik servis.",
           path,
         })}
       />
-      <JsonLd data={faqJsonLd(faqItems.map(({ question, answer }) => ({ question, answer })))} />
+      <JsonLd data={faqJsonLd(faqItems)} />
     </>
   );
 }

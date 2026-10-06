@@ -1,20 +1,25 @@
 import Link from "next/link";
+import type { FaqEntry } from "@/lib/seo";
 
-export type FaqItem = {
-  question: string;
-  answer: string;
+export type FaqItem = FaqEntry & {
   // Yanıtın altında gösterilen isteğe bağlı bağlantı
   action?: { label: string; href: string };
 };
 
-// Sık sorulan sorular: JS gerektirmeyen <details> akordeonu
+// Sık sorulan sorular: JS gerektirmeyen <details> akordeonu.
+// Onaysız (approved: false) sorular etiketle gösterilir.
 export default function Faq({ items }: { items: FaqItem[] }) {
   return (
     <div className="divide-y divide-border rounded-xl border border-border bg-surface">
       {items.map((item) => (
         <details key={item.question} className="group p-5">
           <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold [&::-webkit-details-marker]:hidden">
-            {item.question}
+            <span>
+              {item.question}
+              {!item.approved && (
+                <span className="ml-2 text-xs font-semibold text-accent-text">[ONAY BEKLİYOR]</span>
+              )}
+            </span>
             <span aria-hidden="true" className="shrink-0 text-accent-text transition-transform group-open:rotate-45">+</span>
           </summary>
           <p className="mt-3 text-muted">{item.answer}</p>

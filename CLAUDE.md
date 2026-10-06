@@ -38,6 +38,7 @@ Bu dosya projenin ana planı ve kurallarıdır. Her oturumda ve her alt ajanda g
 - **Uydurma veri YOK:** Sahte müşteri yorumu, sahte sayaç rakamı ("5000+ memnun müşteri" vb.), sahte fiyat, sahte sertifika yazılmaz.
 - Firma sahibinin onaylaması gereken her şey `[ONAY BEKLİYOR]` etiketiyle yazılır ve `ONAY_LISTESI.md` dosyasına eklenir (ör. fiyat aralıkları, "aynı gün yerinde servis" taahhüdü, iş ortağı listesi, gerçek rakamlar).
 - Eski siteden **alınmayacaklar:** slider, 2020 kampanyaları, 0 gösteren sayaçlar, "All" gibi İngilizce kalıntılar, boş menü linkleri, ayrı Instagram sayfası.
+- **Apostrof:** Tüm içerikte düz apostrof (`'`) kullanılır; tipografik (`’`) kullanılmaz.
 - Stok görsel indirme. Görsel gereken yerlerde sade SVG illüstrasyon/ikon veya nötr yer tutucu kullan. Logo dosyasını Yusuf `public/logo/` altına koyacak; yoksa metin logo kullan.
 
 ## 5. Site haritası
@@ -135,6 +136,6 @@ Bu bölümdeki kurallar ana oturum, **alt ajanlar (subagent), fork'lar, workflow
 - Faz 1'deki her sayfa bitince dur ve Yusuf'a göster; onay almadan sonraki sayfaya geçme.
 - Yapılan işler ve kalan işler `ILERLEME.md` dosyasında tutulur (kısa maddeler).
 - Onay gerektiren içerikler `ONAY_LISTESI.md` dosyasına eklenir.
-- **Süreç kuralı:** Yusuf kendi terminalinde 3000 portunda `npm run dev` çalıştırır. Claude Code başkasının başlattığı hiçbir süreci kapatmaz (`pkill`/`killall` yasak). Test gerekiyorsa sunucuyu 3001 portunda başlatır (`npm run dev -- -p 3001`), işi bitince sadece kendi başlattığı süreci PID ile kapatır. Bu kural alt ajanlar için de geçerlidir.
+- **Süreç kuralı:** Bu makinede 3000 portu başka bir projeye (Uşak Sanal AVM) ait. Yusuf tekbimdemo'yu kendi terminalinde 3001 portunda çalıştırır. Claude Code testleri bu sunucuya `curl` ile yapar. Sunucu kapalıysa 3002 portunda kendi sunucusunu başlatır (`npm run dev -- -p 3002`) ve işi bitince sadece onu PID ile kapatır. Başkasının başlattığı süreçleri kapatmak (`pkill`/`killall`) yasaktır. Bu kural alt ajanlar için de geçerlidir.
 
 @AGENTS.md
