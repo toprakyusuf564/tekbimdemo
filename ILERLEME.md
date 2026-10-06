@@ -19,6 +19,12 @@
 - [x] Onay bekleyenler `ONAY_LISTESI.md`'ye eklendi (#3, #8, #9)
 - [x] Doğrulama: `tsc --noEmit` ve lint temiz; dev'de tek h1, noindex ve `Disallow: /` (preview), robots `Allow` (production) görüldü
 
+### Adım 2b — Ana sayfa animasyonları
+- [x] Süreç kuralı CLAUDE.md bölüm 10'a eklendi; marka rozetleri düzeltildi (PSON→Epson, AnyDesk rozetten çıkarıldı)
+- [x] Hero devre kartı SVG + akan ışık noktaları, değişen kelime (CLS'siz grid yığını, h1 sabit), barkod lazer taraması, kaydırınca beliren kartlar (`ScrollReveal`)
+- [x] `prefers-reduced-motion`: tüm animasyonlar durur; JS yoksa içerik görünür
+- [ ] Görsel kontrol Yusuf'ta
+
 ### Kalan
 - [ ] Adım 3 — `/hizmetler/teknik-servis`
 - [ ] Adım 4 — `/yazilim/restoran-cafe-otomasyonu`

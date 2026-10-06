@@ -11,5 +11,5 @@
 | 5 | Logo dosyası (`public/logo/`) — yoksa metin logo | `Header.tsx`, `site.ts` | Yusuf getirecek |
 | 6 | Enlem/boylam (harita için; JSON-LD'de geo alanı şimdilik yok) | `site.ts` | [ONAY BEKLİYOR] |
 | 7 | Hizmet/yazılım kısa açıklama metinleri (genel ifadeler, firma sahibi gözden geçirmeli) | `src/content/services.ts`, `software.ts` | [ONAY BEKLİYOR] |
-| 8 | Marka listesi (Berqnet, Dahua, PSON, AnyDesk — tekbim.net'te geçenler) ve resmi iş ortaklığı durumu | Ana sayfa, Markalar | [ONAY BEKLİYOR] |
+| 8 | Marka listesi (Berqnet, Dahua, Epson) ve resmi iş ortaklığı durumu. Not: eski sitede "PSON" yazıyordu, doğrusu Epson olarak düzeltildi; AnyDesk iş ortağı değil uzak destek aracı olduğu için rozetlerden çıkarıldı | Ana sayfa, Markalar | [ONAY BEKLİYOR] |
 | 9 | Ana sayfa giriş metni ve hizmet/servis adımı açıklamaları | `Hero.tsx`, `ServiceSteps.tsx` | [ONAY BEKLİYOR] |

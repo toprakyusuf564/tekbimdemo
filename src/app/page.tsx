@@ -1,9 +1,10 @@
+import BarcodeScan from "@/components/home/BarcodeScan";
 import ContactStrip from "@/components/home/ContactStrip";
 import Hero from "@/components/home/Hero";
 import MaintenanceSummary from "@/components/home/MaintenanceSummary";
 import Partners from "@/components/home/Partners";
 import QuickActions from "@/components/home/QuickActions";
-import ServiceSteps from "@/components/home/ServiceSteps";
+import ServiceSteps from "@/components/ServiceSteps";
 import SolutionGrid from "@/components/home/SolutionGrid";
 import { services } from "@/content/services";
 import { software } from "@/content/software";
@@ -30,6 +31,7 @@ export default function HomePage() {
         title="Yazılım çözümlerimiz"
         items={software}
         tone="surface"
+        aside={<BarcodeScan />}
       />
       <MaintenanceSummary />
       <Partners />

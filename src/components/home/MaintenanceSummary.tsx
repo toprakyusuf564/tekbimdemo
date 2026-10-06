@@ -15,7 +15,7 @@ export default function MaintenanceSummary() {
       />
       <ul className="mt-8 grid gap-4 sm:grid-cols-3">
         {maintenancePlans.map((p) => (
-          <li key={p.slug} className="rounded-xl border border-border bg-bg p-5">
+          <li key={p.slug} data-reveal className="rounded-xl border border-border bg-bg p-5">
             <p className="text-sm font-semibold text-accent-text">{p.period}</p>
             <h3 className="mt-1 font-semibold">{p.title}</h3>
           </li>

@@ -1,19 +1,23 @@
 import ButtonLink from "@/components/ButtonLink";
 import Container from "@/components/Container";
 import Icon from "@/components/Icon";
+import HeroCircuit from "./HeroCircuit";
+import RotatingWord from "./RotatingWord";
 import { site } from "@/content/site";
 
 // Ana sayfa girişi: tek h1, iki ana buton, yanda iletişim özeti
 export default function Hero() {
   return (
-    <section aria-labelledby="hero-baslik" className="bg-chrome text-on-chrome">
-      <Container className="grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[1.4fr_1fr]">
+    <section aria-labelledby="hero-baslik" className="relative overflow-hidden bg-chrome text-on-chrome">
+      <HeroCircuit />
+      <Container className="relative z-10 grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[1.4fr_1fr]">
         <div>
           <p className="mb-3 text-sm font-semibold uppercase tracking-wide text-accent">Aydın / Efeler</p>
           <h1 id="hero-baslik" className="text-3xl font-extrabold tracking-tight sm:text-5xl">
             {site.tagline}
           </h1>
-          <p className="mt-5 max-w-xl text-lg text-on-chrome-muted">
+          <RotatingWord />
+          <p className="mt-4 max-w-xl text-lg text-on-chrome-muted">
             Bilgisayar satışı, teknik servis, ağ ve güvenlik çözümleri ile barkod, depo ve restoran otomasyonu.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">

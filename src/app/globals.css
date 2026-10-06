@@ -70,11 +70,69 @@ body {
   outline-offset: 2px;
 }
 
-/* Hareket azaltma tercihi olanlar için animasyonları kapat */
+/* ---- Hafif animasyonlar (sadece CSS; transform/opacity ağırlıklı) ---- */
+
+/* Hero devre kartı: ışık noktaları hat boyunca akar (pathLength=100 ile normalize) */
+@keyframes devre-akis {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -100; }
+}
+.devre-nokta {
+  stroke-dasharray: 3 97;
+  animation: devre-akis var(--sure, 8s) linear infinite;
+  animation-delay: var(--gecikme, 0s);
+}
+
+/* Hero'daki değişen kelime: hepsi aynı grid hücresinde üst üste durur, hücre en uzun kelimeye göre boyutlanır (CLS yok) */
+@keyframes kelime-degis {
+  0% { opacity: 0; transform: translateY(0.5em); }
+  4%, 25% { opacity: 1; transform: none; }
+  29%, 100% { opacity: 0; transform: translateY(-0.5em); }
+}
+.degisen-kelime {
+  grid-area: 1 / 1;
+  opacity: 0;
+  animation: kelime-degis 12s ease-in-out infinite;
+  animation-delay: var(--gecikme, 0s);
+}
+
+/* Barkod tarama: kırmızı lazer çizgisi barkod üzerinde aşağı yukarı gezer */
+@keyframes lazer-tara {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(var(--tarama, 56px)); }
+}
+.lazer-cizgi {
+  animation: lazer-tara 2.6s ease-in-out infinite;
+}
+
+/* Kaydırınca beliren öğeler: gizleme sınıfını JS ekler, JS yoksa içerik görünür kalır */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal-init.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Hareket azaltma tercihi olanlar için tüm animasyonlar durur */
 @media (prefers-reduced-motion: reduce) {
   * {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
+    animation: none !important;
+    transition: none !important;
     scroll-behavior: auto !important;
+  }
+  .reveal-init {
+    opacity: 1;
+    transform: none;
+  }
+  /* Değişen kelimede sadece ilki görünür kalır */
+  .degisen-kelime:first-child {
+    opacity: 1;
+  }
+  .devre-nokta {
+    display: none;
   }
 }

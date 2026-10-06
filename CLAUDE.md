@@ -135,5 +135,6 @@ Bu bölümdeki kurallar ana oturum, **alt ajanlar (subagent), fork'lar, workflow
 - Faz 1'deki her sayfa bitince dur ve Yusuf'a göster; onay almadan sonraki sayfaya geçme.
 - Yapılan işler ve kalan işler `ILERLEME.md` dosyasında tutulur (kısa maddeler).
 - Onay gerektiren içerikler `ONAY_LISTESI.md` dosyasına eklenir.
+- **Süreç kuralı:** Yusuf kendi terminalinde 3000 portunda `npm run dev` çalıştırır. Claude Code başkasının başlattığı hiçbir süreci kapatmaz (`pkill`/`killall` yasak). Test gerekiyorsa sunucuyu 3001 portunda başlatır (`npm run dev -- -p 3001`), işi bitince sadece kendi başlattığı süreci PID ile kapatır. Bu kural alt ajanlar için de geçerlidir.
 
 @AGENTS.md

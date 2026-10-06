@@ -30,7 +30,7 @@ export default function QuickActions() {
             </>
           );
           return (
-            <li key={a.title}>
+            <li key={a.title} data-reveal>
               {a.href.startsWith("/") ? (
                 <Link href={a.href} className={cardClass}>{inner}</Link>
               ) : (

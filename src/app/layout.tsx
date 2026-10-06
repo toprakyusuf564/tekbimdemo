@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import JsonLd from "@/components/JsonLd";
+import ScrollReveal from "@/components/ScrollReveal";
 import { site } from "@/content/site";
 import { localBusinessJsonLd } from "@/lib/seo";
 import { isProduction } from "@/lib/env";
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <Footer />
         <WhatsAppButton />
+        <ScrollReveal />
         <JsonLd data={localBusinessJsonLd()} />
       </body>
     </html>

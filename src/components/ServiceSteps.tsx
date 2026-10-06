@@ -17,7 +17,7 @@ export default function ServiceSteps() {
       <SectionTitle id="servis-adimlari" eyebrow="Teknik servis" title="Servis nasıl işler?" />
       <ol className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {steps.map((s, i) => (
-          <li key={s.title} className="rounded-xl border border-border bg-bg p-5">
+          <li key={s.title} data-reveal className="rounded-xl border border-border bg-bg p-5">
             <span
               aria-hidden="true"
               className="flex h-9 w-9 items-center justify-center rounded-full bg-accent font-bold text-on-accent"
