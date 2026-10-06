@@ -25,8 +25,14 @@
 - [x] `prefers-reduced-motion`: tüm animasyonlar durur; JS yoksa içerik görünür
 - [ ] Görsel kontrol Yusuf'ta
 
+### Adım 3 — `/hizmetler/teknik-servis`
+- [x] PageHero, Breadcrumb (+JSON-LD), Faq (`<details>`), CtaBand ortak bileşenleri; `ServiceSteps` yeniden kullanıldı
+- [x] Kapsam kartları, servis takibi, bakım anlaşması bölümü, SSS (FAQPage), Service + BreadcrumbList JSON-LD
+- [x] Onay bekleyenler `ONAY_LISTESI.md` #10–#13
+- [x] Doğrulama: `tsc --noEmit` ve lint temiz; sayfa 200, tek h1, title 53 / description 147 karakter
+- [ ] formtakip.net doğrudan adresleri doğrulanacak (Yusuf)
+
 ### Kalan
-- [ ] Adım 3 — `/hizmetler/teknik-servis`
 - [ ] Adım 4 — `/yazilim/restoran-cafe-otomasyonu`
 - [ ] Adım 5 — `/bakim-anlasmalari`
 - [ ] Adım 6 — `/iletisim`

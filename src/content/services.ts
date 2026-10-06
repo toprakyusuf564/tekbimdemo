@@ -52,3 +52,14 @@ export const services: Service[] = [
     available: false,
   },
 ];
+
+// Teknik servis sayfasındaki kapsam kartları (genel ifadeler; firma sahibi gözden geçirmeli)
+export const technicalServiceScope = [
+  { title: "Notebook ve masaüstü onarımı", text: "Açılmayan, yavaşlayan veya hata veren bilgisayarların sorununu bulur ve onarırız." },
+  { title: "Arıza tespiti", text: "Sorunun kaynağını belirler, yapılacak işlemi size anlatırız." },
+  { title: "Parça değişimi ve donanım yükseltme", text: "Gerektiğinde arızalı parçayı değiştirir, cihazınızı donanım yükseltmeyle güçlendiririz." },
+  { title: "İşletim sistemi ve yazılım kurulumu", text: "İşletim sistemi ve ihtiyacınız olan programların kurulumunu yaparız." },
+  { title: "Virüs temizliği", text: "Virüs ve zararlı yazılımları temizler, cihazı tekrar güvenle kullanmanız için hazırlarız." },
+  { title: "Veri yedekleme", text: "Önemli verilerinizin yedeklenmesinde destek veririz." },
+  { title: "Kurumsal firmalara yerinde servis", text: "Bakım anlaşması bulunan firmalarımıza işletmelerinde destek veririz." },
+];
