@@ -1,27 +1,19 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { Suspense, useState, type FormEvent } from "react";
+import { useState, useSyncExternalStore, type FormEvent } from "react";
 import { PendingTag } from "@/components/PendingNote";
-import { isRequestType, requestTypes, type RequestTypeId } from "@/content/contact";
-import { site, whatsappLink } from "@/content/site";
-
-type Values = { ad: string; telefon: string; tur: RequestTypeId | ""; konu: string; mesaj: string; kvkk: boolean };
-type Errors = Partial<Record<keyof Values, string>>;
+import { isRequestType, requestTypes } from "@/content/contact";
+import { site } from "@/content/site";
+import {
+  buildMailtoUrl,
+  buildMessage,
+  buildWhatsappUrl,
+  validateForm,
+  type FormValues,
+} from "@/lib/contactForm";
 
 // Alanların sırası: ilk hatalı alana odaklanmak için
-const fieldOrder: (keyof Values)[] = ["ad", "telefon", "tur", "mesaj", "kvkk"];
-
-function validate(v: Values): Errors {
-  const errors: Errors = {};
-  if (v.ad.trim().length < 3) errors.ad = "Lütfen adınızı ve soyadınızı yazın.";
-  const digits = v.telefon.replace(/\D/g, "");
-  if (digits.length < 10 || digits.length > 12) errors.telefon = "Lütfen geçerli bir telefon numarası yazın (örn. 0 5xx xxx xx xx).";
-  if (!v.tur) errors.tur = "Lütfen talep türünü seçin.";
-  if (v.mesaj.trim().length < 5) errors.mesaj = "Lütfen mesajınızı yazın.";
-  if (!v.kvkk) errors.kvkk = "Devam etmek için aydınlatma metni onay kutusunu işaretleyin.";
-  return errors;
-}
+const fieldOrder: (keyof FormValues)[] = ["ad", "telefon", "tur", "mesaj", "kvkk"];
 
 // Alan altı hata mesajı (aria-describedby ile alana bağlanır)
 function FieldError({ name, text }: { name: string; text?: string }) {
@@ -35,57 +27,61 @@ function FieldError({ name, text }: { name: string; text?: string }) {
 
 const inputClass = "mt-1 w-full rounded-md border border-border bg-bg px-3 py-2.5 aria-[invalid=true]:border-accent-text";
 
-function Fields({ initialType }: { initialType: RequestTypeId | "" }) {
-  const [values, setValues] = useState<Values>({ ad: "", telefon: "", tur: initialType, konu: "", mesaj: "", kvkk: false });
-  const [errors, setErrors] = useState<Errors>({});
+// ?konu= parametresi bileşen yüklendikten sonra window.location.search'ten okunur.
+// Sunucu/ilk HTML'de null döner (tek render, hydration farkı yok); istemcide URL'deki değer gelir.
+const subscribeUrl = (onChange: () => void) => {
+  window.addEventListener("popstate", onChange);
+  return () => window.removeEventListener("popstate", onChange);
+};
+const getKonu = () => new URLSearchParams(window.location.search).get("konu");
+const getServerKonu = () => null;
+
+export default function ContactForm() {
+  const [values, setValues] = useState<Omit<FormValues, "tur">>({ ad: "", telefon: "", konu: "", mesaj: "", kvkk: false });
+  // Kullanıcı türü kendisi seçtiyse o geçerli; seçmediyse URL'deki ?konu= kullanılır
+  const [secilenTur, setSecilenTur] = useState<string | null>(null);
+  const [errors, setErrors] = useState<Partial<Record<keyof FormValues, string>>>({});
   // aria-live bölgesinde okunan durum mesajı
   const [status, setStatus] = useState("");
 
-  const set = <K extends keyof Values>(key: K, value: Values[K]) => setValues((v) => ({ ...v, [key]: value }));
+  const konu = useSyncExternalStore(subscribeUrl, getKonu, getServerKonu);
+  const tur = secilenTur ?? (isRequestType(konu) ? konu : "");
+  const all: FormValues = { ...values, tur };
 
-  // Doğrular; hata varsa ilk hatalı alana odaklanır
+  const set = <K extends keyof typeof values>(key: K, value: (typeof values)[K]) => setValues((v) => ({ ...v, [key]: value }));
+
+  // Doğrular; hata varsa özet mesajı yazar ve ilk hatalı alana odaklanır
   const check = () => {
-    const errs = validate(values);
+    const errs = validateForm(all);
     setErrors(errs);
     const first = fieldOrder.find((k) => errs[k]);
     if (first) {
-      const count = Object.keys(errs).length;
-      setStatus(`Formda ${count} eksik veya hatalı alan var: ${Object.values(errs).join(" ")}`);
+      setStatus(`Formda ${Object.keys(errs).length} eksik veya hatalı alan var: ${Object.values(errs).join(" ")}`);
       document.getElementById(`alan-${first}`)?.focus();
       return false;
     }
     return true;
   };
 
-  const message = () => {
-    const label = requestTypes.find((t) => t.id === values.tur)?.label ?? "";
-    const lines = [
-      `Merhaba, "${label}" için yazıyorum.`,
-      `Ad soyad: ${values.ad.trim()}`,
-      `Telefon: ${values.telefon.trim()}`,
-      values.konu.trim() && `Cihaz / konu: ${values.konu.trim()}`,
-      `Mesaj: ${values.mesaj.trim()}`,
-    ].filter(Boolean);
-    return { label, text: lines.join("\n") };
-  };
+  const typeLabel = () => requestTypes.find((t) => t.id === tur)?.label ?? "";
 
   // Ana gönderim: WhatsApp mesajı hazırlar
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!check()) return;
-    window.open(whatsappLink(message().text), "_blank", "noopener,noreferrer");
+    window.open(buildWhatsappUrl(site.whatsapp, buildMessage(all, typeLabel())), "_blank", "noopener,noreferrer");
     setStatus("WhatsApp açıldı. Mesajı WhatsApp'ta göndermeyi unutmayın.");
   };
 
   // Alternatif: e-posta taslağı hazırlar
   const onMail = () => {
     if (!check()) return;
-    const { label, text } = message();
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(`${label} - ${values.ad.trim()}`)}&body=${encodeURIComponent(text)}`;
+    window.location.href = buildMailtoUrl(site.email, `${typeLabel()} - ${values.ad.trim()}`, buildMessage(all, typeLabel()));
     setStatus("E-posta taslağı açıldı. Göndermeyi unutmayın.");
   };
 
-  const describedBy = (k: keyof Values) => (errors[k] ? `hata-${k}` : undefined);
+  const describedBy = (k: keyof FormValues) => (errors[k] ? `hata-${k}` : undefined);
+
   return (
     <form onSubmit={onSubmit} noValidate className="grid gap-5 sm:grid-cols-2">
       <div>
@@ -102,8 +98,8 @@ function Fields({ initialType }: { initialType: RequestTypeId | "" }) {
       </div>
       <div>
         <label htmlFor="alan-tur" className="font-semibold">Talep türü</label>
-        <select id="alan-tur" name="tur" required value={values.tur}
-          onChange={(e) => set("tur", e.target.value as RequestTypeId | "")} aria-invalid={!!errors.tur} aria-describedby={describedBy("tur")} className={inputClass}>
+        <select id="alan-tur" name="tur" required value={tur}
+          onChange={(e) => setSecilenTur(e.target.value)} aria-invalid={!!errors.tur} aria-describedby={describedBy("tur")} className={inputClass}>
           <option value="">Seçin</option>
           {requestTypes.map((t) => (
             <option key={t.id} value={t.id}>{t.label}</option>
@@ -156,21 +152,5 @@ function Fields({ initialType }: { initialType: RequestTypeId | "" }) {
       </div>
       <p className="text-sm text-muted sm:col-span-2">Demo sürüm — canlıda talep doğrudan servis sistemine kaydedilecek.</p>
     </form>
-  );
-}
-
-// ?konu= parametresini okur; Suspense içinde olmalı (statik export)
-function FormWithParam() {
-  const konu = useSearchParams().get("konu");
-  const initial = isRequestType(konu) ? konu : "";
-  // Parametre değişirse form baştan kurulur
-  return <Fields key={initial} initialType={initial} />;
-}
-
-export default function ContactForm() {
-  return (
-    <Suspense fallback={<Fields initialType="" />}>
-      <FormWithParam />
-    </Suspense>
   );
 }

@@ -91,18 +91,16 @@ export default function IletisimPage() {
         </div>
       </Section>
 
-      <Section labelledBy="talep-formu">
-        {/* Servis talebi, demo/teklif ve bakım anlaşması butonları bu bölüme gelir (?konu= ile tür seçilir) */}
-        <div id="servis-talebi" className="scroll-mt-24">
-          <SectionTitle
-            id="talep-formu"
-            eyebrow="Form"
-            title="Talebinizi iletin"
-            description="Formu doldurun; mesajınız WhatsApp veya e-posta ile bize ulaşsın."
-          />
-          <div className="mt-8 max-w-3xl">
-            <ContactForm />
-          </div>
+      {/* Servis talebi, demo/teklif ve bakım anlaşması butonları bu bölüme gelir (?konu= ile tür seçilir) */}
+      <Section id="servis-talebi" labelledBy="talep-formu">
+        <SectionTitle
+          id="talep-formu"
+          eyebrow="Form"
+          title="Talebinizi iletin"
+          description="Formu doldurun; mesajınız WhatsApp veya e-posta ile bize ulaşsın."
+        />
+        <div className="mt-8 max-w-3xl">
+          <ContactForm />
         </div>
       </Section>
 
