@@ -105,3 +105,8 @@ Hedefin altında kalanlar: `/iletisim` LCP medyanı 2.70 s (en iyi tur 2.01 s, e
 
 ## Faz 2
 Faz 1 onaylandıktan sonra (CLAUDE.md bölüm 5).
+
+## Cloudflare Pages önizleme yayını (6 Ekim 2026)
+- Sunum build: `NEXT_PUBLIC_SITE_ENV=preview NEXT_PUBLIC_SHOW_PENDING=false npm run build` (robots Disallow, noindex, etiketler gizli doğrulandı).
+- Yükleme: `npx wrangler pages deploy out --project-name tekbimdemo` (giriş ve yükleme Yusuf tarafından).
+- `FIRMA_SORULARI.md` eklendi (ONAY_LISTESI #1-#26 sade sorulara çevrildi).
