@@ -46,8 +46,16 @@
 - [x] Doğrulama: `tsc --noEmit` ve lint temiz; sayfa 200, tek h1, title 50 / description 141 karakter
 - [ ] formtakip https desteği Yusuf tarafından kontrol edilecek
 
+### Düzeltmeler (Adım 4 sonrası)
+- [x] ERP12 marka rozetine eklendi (ONAY #14 notu), "Yemeksepeti" yazımı + güncelliği belirsiz olduğu için onaysız (ONAY #20)
+- [x] `NEXT_PUBLIC_SHOW_PENDING` (varsayılan true), `PendingTag`/`PendingNote`; `.env.example` ve CLAUDE.md bölüm 4
+
+### Adım 5 — `/bakim-anlasmalari`
+- [x] 3 paket kartı ("Teklif iste" → `/iletisim?konu=bakim#servis-talebi`), web servis bölümü, karşılaştırma tablosu (yatay kaydırılabilir, bilinmeyen hücreler onay etiketli), kimler için, SSS, CtaBand
+- [x] JSON-LD: Service (fiyat yok) + FAQPage (onaylı sorular) + BreadcrumbList
+- [x] Onay bekleyenler `ONAY_LISTESI.md` #21–#24
+
 ### Kalan
-- [ ] Adım 5 — `/bakim-anlasmalari`
 - [ ] Adım 6 — `/iletisim`
 - [ ] Adım 7 — Build + Lighthouse kontrolü
 

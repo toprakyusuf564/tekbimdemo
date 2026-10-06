@@ -1,5 +1,8 @@
 // Firma bilgileri — tek kaynak. Kaynak: tekbim.net (yazım hataları düzeltilmiş)
 
+// İletişim sayfasındaki form: ?konu= talep türünü önceden seçer (servis | demo | bakim | genel)
+export const contactFormHref = (konu: "servis" | "demo" | "bakim" | "genel") => `/iletisim?konu=${konu}#servis-talebi`;
+
 // formtakip.net protokolü tek yerden yönetilir (https desteğini Yusuf doğrulayacak; ONAY_LISTESI.md #12)
 const FORMTAKIP_PROTOCOL = "https";
 const formtakipBase = `${FORMTAKIP_PROTOCOL}://formtakip.net`;
@@ -35,8 +38,8 @@ export const site = {
     facebook: "https://www.facebook.com/tekbimbilgisayar",
     instagram: "https://www.instagram.com/tekbimbilgisayar",
   },
-  // Servis talebi formu iletişim sayfasında (Adım 6) #servis-talebi bölümünde olacak
-  serviceRequestHref: "/iletisim#servis-talebi",
+  // Servis talebi formu iletişim sayfasında #servis-talebi bölümündedir
+  serviceRequestHref: contactFormHref("servis"),
   remoteSupportUrl: "https://anydesk.com/tr/downloads/windows",
   // Servis takip sistemi (Tekbim markası)
   serviceTrack: {

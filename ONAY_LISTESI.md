@@ -24,3 +24,7 @@
 | 18 | SSS'de onaysız yanıtlar: yazar kasa, donanım, kurulum ve destek (JSON-LD'ye girmez, sayfada etiketli) | Restoran otomasyonu sayfası | [ONAY BEKLİYOR] |
 | 19 | Ana sayfadaki restoran/cafe kartı özet cümlesi yeniden yazıldı (eski sayfada geçen özelliklere göre) | `software.ts` | [ONAY BEKLİYOR] |
 | 20 | Yemeksepeti entegrasyonu: eski sayfada geçiyor ama güncelliği belirsiz. Özelliklerden ve onaylı SSS yanıtından çıkarıldı; onaysız olarak etiketli | Restoran otomasyonu sayfası, `restaurant.ts` | [ONAY BEKLİYOR — güncelliği teyit edilecek] |
+| 21 | Bakım anlaşması paket açıklamaları (eski sitedeki üç tür adından türetildi, ek iddia yok) | `maintenance.ts` | [ONAY BEKLİYOR] |
+| 22 | Karşılaştırma tablosu: ödeme şekli, müdahale süresi, yerinde servis, uzaktan destek (AnyDesk), periyodik bakım — her paket için. Tahmin yazılmadı; hücreler etiketli. Web servis satırı eski siteden doğrulandı | `/bakim-anlasmalari`, `maintenance.ts` | [ONAY BEKLİYOR] |
+| 23 | Bakım anlaşmaları SSS'de onaysız yanıtlar: fiyat, müdahale süresi, yerinde servis (JSON-LD'ye girmez) | `/bakim-anlasmalari` | [ONAY BEKLİYOR] |
+| 24 | "Kimler için?" bölümü genel anlatım (ofis, mağaza, restoran, çok bilgisayarlı işletme) | `maintenance.ts` | [ONAY BEKLİYOR] |

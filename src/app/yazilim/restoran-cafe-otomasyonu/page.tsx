@@ -13,7 +13,7 @@ import {
   restaurantProduct,
   restaurantSegments,
 } from "@/content/restaurant";
-import { site, whatsappLink } from "@/content/site";
+import { contactFormHref, site, whatsappLink } from "@/content/site";
 import { buildMetadata, faqJsonLd, serviceJsonLd } from "@/lib/seo";
 
 const path = "/yazilim/restoran-cafe-otomasyonu";
@@ -69,7 +69,7 @@ const faqItems: FaqItem[] = [
     question: "Demo veya teklif nasıl alırım?",
     approved: true,
     answer: "Bizi arayabilir, WhatsApp'tan yazabilir veya iletişim formunu doldurabilirsiniz.",
-    action: { label: "İletişim formu", href: site.serviceRequestHref },
+    action: { label: "İletişim formu", href: contactFormHref("demo") },
   },
 ];
 
@@ -83,7 +83,7 @@ export default function RestoranCafeOtomasyonuPage() {
         trail={[{ name: "Restoran / Cafe Otomasyonu", path }]}
         aside={<BarcodeScan className="text-on-chrome" />}
       >
-        <ButtonLink href={site.serviceRequestHref}>Demo / Teklif İste</ButtonLink>
+        <ButtonLink href={contactFormHref("demo")}>Demo / Teklif İste</ButtonLink>
         <ButtonLink href={`tel:${site.phone.tel}`} variant="outline">Bizi Arayın</ButtonLink>
         <ButtonLink href={whatsappLink("Merhaba, restoran/cafe otomasyonu hakkında bilgi almak istiyorum.")} variant="outline">
           WhatsApp
@@ -156,6 +156,7 @@ export default function RestoranCafeOtomasyonuPage() {
         title="Restoran veya cafeniz için teklif alın"
         text={site.hours.display}
         primaryLabel="Demo / Teklif İste"
+        primaryHref={contactFormHref("demo")}
       />
 
       <JsonLd
