@@ -9,9 +9,11 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 bg-chrome text-on-chrome shadow-sm">
       <Container className="relative flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="flex items-baseline gap-1.5 rounded-md" aria-label={`${site.name} ana sayfa`}>
+        <Link href="/" className="flex items-baseline gap-1.5 rounded-md">
           <span className="text-xl font-extrabold tracking-tight">tekbim</span>
           <span className="text-sm font-medium text-accent">Bilgisayar</span>
+          {/* Erişilebilir ad görünür metni içerir: "tekbim Bilgisayar ana sayfa" */}
+          <span className="sr-only">ana sayfa</span>
         </Link>
 
         <nav aria-label="Ana menü" className="hidden md:block">

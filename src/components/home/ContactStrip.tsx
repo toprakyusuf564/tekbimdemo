@@ -16,13 +16,12 @@ export default function ContactStrip() {
         </div>
         <div className="flex items-start gap-3">
           <Icon name="phone" size={20} className="mt-0.5 shrink-0 text-accent-text" />
-          <p>
-            <a className="font-semibold hover:underline" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>
-            <br />
-            <a className="hover:underline" href={`tel:${site.mobile.tel}`}>{site.mobile.display}</a>
-            <br />
-            <a className="text-link hover:underline" href={`mailto:${site.email}`}>{site.email}</a>
-          </p>
+          {/* Dokunma hedefleri en az 24px yüksekliğinde (py-1) */}
+          <div>
+            <a className="block py-1 font-semibold hover:underline" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>
+            <a className="block py-1 hover:underline" href={`tel:${site.mobile.tel}`}>{site.mobile.display}</a>
+            <a className="block py-1 text-link hover:underline" href={`mailto:${site.email}`}>{site.email}</a>
+          </div>
         </div>
         <div className="flex items-start gap-3">
           <Icon name="clock" size={20} className="mt-0.5 shrink-0 text-accent-text" />

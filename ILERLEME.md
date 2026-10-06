@@ -67,8 +67,41 @@
 ### Faz 1 durumu
 Beş sayfa tamam. Faz 1 onayı ve Adım 7 (build + Lighthouse) sırada.
 
+### Düzeltme — iletişim formu tek render
+- [x] Suspense/useSearchParams kaldırıldı; `?konu=` mount sonrası `window.location.search`'ten okunuyor (lint `setState in effect` kuralı yüzünden `useSyncExternalStore`, sunucu snapshot'ı `null`)
+- [x] `id="servis-talebi"` formda değil, saran `<section>`'da; `out/iletisim.html`'de tek `<form>` ve tek id doğrulandı
+- [x] Form mantığı `src/lib/contactForm.ts`'e çıktı (node ile test edildi): KVKK işaretsizken hata, harfli telefon reddi, `encodeURIComponent` ile ğ/ü/ş/ı/ö/ç/İ ve satır sonları kayıpsız; mailto gövdesi CRLF
+
+### Adım 7 — Build ve Lighthouse
+- [x] `npm audit`: 5 high, hepsi `eslint-config-next` → `braces` zincirinde (yalnızca geliştirme bağımlılığı, çıktıya girmez); `--omit=dev` ile 0 açık. `npm audit fix` (force'suz) bir şey değiştirmedi. Tek çözüm `--force` (eslint-config-next 14'e düşüyor), uygulanmadı
+- [x] `NEXT_PUBLIC_SITE_ENV=production npm run build` → 10 statik sayfa; `out/_redirects` `public/_redirects` ile aynı (15 satır)
+- [x] `out/` 3002'de `npx serve` ile servis edildi, Lighthouse 12.8.2 mobil, 5 sayfa; JSON raporlar repo dışında: `../tekbimdemo-raporlar/`; 3002 sunucusu PID ile kapatıldı
+- [x] Düzeltilen gerçek bulgular: `target-size` (hero/iletişim şeridindeki `tel:` linkleri 17px yüksekti → `py-1`), `label-content-name-mismatch` (logo `aria-label` kaldırıldı, görünür metin + `sr-only` "ana sayfa"). Sonuç: 5 sayfada Erişilebilirlik 100
+- [x] Kullanılmayan create-next-app şablon SVG'leri `public/`'ten silindi
+- [x] Varsayılan (preview) ayarla yeniden build alındı; `out/robots.txt` `Disallow: /`
+
+**Önce / sonra**
+
+| | Eski tekbim.net (6 Ekim 2026) | Yeni demo (Lighthouse mobil, yerel) |
+|---|---|---|
+| PageSpeed | Zaman aşımı (`net::ERR_TIMED_OUT`), ölçülemedi | Aşağıdaki tablo |
+
+| Sayfa | Perf (medyan, aralık) | A11y | BP | SEO | LCP (medyan) | CLS | TBT (medyan) |
+|---|---|---|---|---|---|---|---|
+| / | 96 (96–97) | 100 | 100 | 100 | 2.00 s | 0.000 | 191 ms |
+| /hizmetler/teknik-servis | 94 (75–97) | 100 | 100 | 100 | 2.26 s | 0.000 | 254 ms |
+| /yazilim/restoran-cafe-otomasyonu | 95 (81–97) | 100 | 100 | 100 | 2.00 s | 0.000 | 242 ms |
+| /bakim-anlasmalari | 90 (89–94) | 100 | 100 | 100 | 2.12 s | 0.000 | 298 ms |
+| /iletisim | 90 (64–98) | 100 | 100 | 100 | 2.70 s | 0.000 | 280 ms |
+
+Not: Perf/LCP/TBT, makine yükünün makul olduğu ilk 3 turun medyanıdır (a11y düzeltmesinden önce; düzeltme sadece `py-1` ve logo adı, performansı etkilemez). A11y/BP/SEO/CLS düzeltme sonrası değerlerdir.
+
+**Ölçüm güvenilirliği:** Aynı sayfa aynı build'de 53–98 arası puan aldı. Lighthouse'un kaydettiği `benchmarkIndex` (CPU hızı) turlar arasında ~1900'den ~300'e düştü, sistem yükü 8–45 arasında salındı (yük bu projeye ait değil). Düzeltme sonrası turlarda ana sayfa 60–85 çıktı (script değerlendirme süresi 544 ms → 700–2600 ms, kod aynı). Bu yüzden Performans/LCP için kesin sonuç **canlıya çıkınca PageSpeed Insights ile** doğrulanmalı.
+
+Hedefin altında kalanlar: `/iletisim` LCP medyanı 2.70 s (en iyi tur 2.01 s, en kötü 3.45 s); `/bakim-anlasmalari` Perf medyanı sınırda (90). LCP öğesi hero açıklama metni (görsel yok, TBT/CPU kaynaklı render gecikmesi 125–330 ms). Kalan JS maliyeti Next/React çerçeve parçalarından (~115 KB gzip, `legacy-javascript` ~13 KB Next'in kendi polyfill'i), bu projenin kodundan değil.
+
 ### Kalan
-- [ ] Adım 7 — Build + Lighthouse kontrolü
+- [ ] Canlıya çıkınca PageSpeed Insights ile doğrulama
 
 ## Faz 2
 Faz 1 onaylandıktan sonra (CLAUDE.md bölüm 5).
