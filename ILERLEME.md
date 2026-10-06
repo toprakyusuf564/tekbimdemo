@@ -12,8 +12,14 @@
 - [x] `sitemap.ts`, `robots.ts`, `public/_redirects`
 - [x] Doğrulama: `tsc --noEmit` temiz, lint temiz, `npm run dev` ile /, sitemap.xml, robots.txt 200 döndü
 
+### Adım 2 — Ana sayfa
+- [x] Karar uygulamaları: `@AGENTS.md` + node_modules istisnası (CLAUDE.md), sosyal hesaplar + footer ikonları, Servis Talebi → `/iletisim#servis-talebi`
+- [x] Ortam ayrımı: `NEXT_PUBLIC_SITE_ENV` (varsayılan `preview` → robots Disallow + noindex), `.env.example`
+- [x] Ana sayfa: Hero, hızlı işlemler, servis adımları, hizmetler, yazılım, bakım özeti, markalar, iletişim şeridi
+- [x] Onay bekleyenler `ONAY_LISTESI.md`'ye eklendi (#3, #8, #9)
+- [x] Doğrulama: `tsc --noEmit` ve lint temiz; dev'de tek h1, noindex ve `Disallow: /` (preview), robots `Allow` (production) görüldü
+
 ### Kalan
-- [ ] Adım 2 — Ana sayfa
 - [ ] Adım 3 — `/hizmetler/teknik-servis`
 - [ ] Adım 4 — `/yazilim/restoran-cafe-otomasyonu`
 - [ ] Adım 5 — `/bakim-anlasmalari`

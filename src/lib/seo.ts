@@ -41,6 +41,7 @@ export function localBusinessJsonLd() {
     foundingDate: String(site.foundingYear),
     telephone: [site.phone.tel, site.mobile.tel],
     email: site.email,
+    sameAs: Object.values(site.social),
     address: {
       "@type": "PostalAddress",
       streetAddress: site.address.street,

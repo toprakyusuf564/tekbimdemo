@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Container from "./Container";
+import Icon, { type IconName } from "./Icon";
 import { mainNav, site } from "@/content/site";
 
-// Alt bilgi: iletişim, çalışma saatleri, hızlı bağlantılar.
-// Sosyal ikonlar ve banka bilgileri linki: hesap adresleri/sayfa gelince eklenecek (ONAY_LISTESI.md).
+// Alt bilgi: sosyal ikonlar, iletişim, çalışma saatleri, hızlı bağlantılar.
+// Banka bilgileri linki: sayfa Faz 2'de gelince eklenecek.
 export default function Footer() {
   const linkClass = "rounded-sm underline-offset-2 hover:underline";
   return (
@@ -12,6 +13,24 @@ export default function Footer() {
         <div>
           <p className="text-lg font-extrabold text-on-chrome">{site.name}</p>
           <p className="mt-2 text-sm">{site.tagline}</p>
+          <ul className="mt-4 flex gap-2">
+            {[
+              { name: "Facebook", href: site.social.facebook, icon: "facebook" },
+              { name: "Instagram", href: site.social.instagram, icon: "instagram" },
+            ].map((s) => (
+              <li key={s.name}>
+                <a
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${site.name} ${s.name} sayfası`}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-md text-on-chrome hover:bg-white/10"
+                >
+                  <Icon name={s.icon as IconName} size={20} />
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
 
         <div>

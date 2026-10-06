@@ -27,12 +27,21 @@ export const site = {
     opens: "09:00",
     closes: "19:00",
   },
+  social: {
+    facebook: "https://www.facebook.com/tekbimbilgisayar",
+    instagram: "https://www.instagram.com/tekbimbilgisayar",
+  },
+  // Servis talebi formu iletişim sayfasında (Adım 6) #servis-talebi bölümünde olacak
+  serviceRequestHref: "/iletisim#servis-talebi",
   remoteSupportUrl: "https://anydesk.com/tr/downloads/windows",
   // Servis takip sistemi (Tekbim markası)
   serviceTrackUrl: "https://formtakip.net",
   // Logo dosyası gelene kadar metin logo kullanılır (public/logo/ altına konacak)
   logo: null as string | null,
 } as const;
+
+// Google Maps adres araması (yol tarifi için)
+export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.address.full)}`;
 
 // Faz 1'de var olan sayfalar. Faz 2 sayfaları eklendikçe buraya girer.
 export const mainNav = [

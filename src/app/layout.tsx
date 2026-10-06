@@ -7,6 +7,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import JsonLd from "@/components/JsonLd";
 import { site } from "@/content/site";
 import { localBusinessJsonLd } from "@/lib/seo";
+import { isProduction } from "@/lib/env";
 
 // Türkçe karakterler için latin-ext dahil; font build sırasında indirilip kendi sunucumuzdan servis edilir
 const inter = Inter({
@@ -19,6 +20,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: `Aydın Bilgisayar Servisi | ${site.name}`,
   description: site.description,
+  // Canlı dışında indekslenmesin
+  ...(isProduction ? {} : { robots: { index: false, follow: false } }),
 };
 
 // Sayfa çizilmeden önce temayı uygular (kayıtlı tercih yoksa sistem tercihi) — yanıp sönmeyi önler

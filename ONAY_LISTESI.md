@@ -6,8 +6,10 @@
 |---|---|---|---|
 | 1 | Bakım anlaşması fiyatları (yıllık / aylık / servis başına) | `src/content/maintenance.ts` | [ONAY BEKLİYOR] |
 | 2 | Bakım anlaşması paket kapsamları | `src/content/maintenance.ts` | [ONAY BEKLİYOR] |
-| 3 | "Ücretsiz arıza tespiti" taahhüdü (servis adımları) | Ana sayfa (Adım 2) | [ONAY BEKLİYOR] |
-| 4 | Sosyal medya hesap adresleri (footer ikonları) | `Footer.tsx` | [ONAY BEKLİYOR] |
+| 3 | "Ücretsiz arıza tespiti" taahhüdü | Ana sayfa, "Servis nasıl işler?" 2. adım | [ONAY BEKLİYOR] |
+| 4 | Sosyal medya hesapları (Facebook, Instagram) | `site.ts`, Footer | Yusuf sağladı; firma sahibi doğrulamalı |
 | 5 | Logo dosyası (`public/logo/`) — yoksa metin logo | `Header.tsx`, `site.ts` | Yusuf getirecek |
-| 6 | Enlem/boylam (harita ve yapısal veri için) | `site.ts` | [ONAY BEKLİYOR] |
+| 6 | Enlem/boylam (harita için; JSON-LD'de geo alanı şimdilik yok) | `site.ts` | [ONAY BEKLİYOR] |
 | 7 | Hizmet/yazılım kısa açıklama metinleri (genel ifadeler, firma sahibi gözden geçirmeli) | `src/content/services.ts`, `software.ts` | [ONAY BEKLİYOR] |
+| 8 | Marka listesi (Berqnet, Dahua, PSON, AnyDesk — tekbim.net'te geçenler) ve resmi iş ortaklığı durumu | Ana sayfa, Markalar | [ONAY BEKLİYOR] |
+| 9 | Ana sayfa giriş metni ve hizmet/servis adımı açıklamaları | `Hero.tsx`, `ServiceSteps.tsx` | [ONAY BEKLİYOR] |
