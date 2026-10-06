@@ -1,3 +1,4 @@
+import { PendingTag } from "@/components/PendingNote";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
 
@@ -25,7 +26,11 @@ export default function ServiceSteps() {
               {i + 1}
             </span>
             <h3 className="mt-3 font-semibold">{s.title}</h3>
-            {s.pending && <p className="mt-1 text-xs font-semibold text-accent-text">[ONAY BEKLİYOR]</p>}
+            {s.pending && (
+              <p className="mt-1 text-xs">
+                <PendingTag />
+              </p>
+            )}
             <p className="mt-2 text-sm text-muted">{s.text}</p>
           </li>
         ))}

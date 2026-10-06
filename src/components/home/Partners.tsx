@@ -1,9 +1,10 @@
+import PendingNote from "@/components/PendingNote";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
 
-// Marka adları tekbim.net ana sayfasında geçenlerdir (eski sitedeki "PSON" yazım hatası, doğrusu Epson).
+// Marka adları tekbim.net'te geçenlerdir (eski sitedeki "PSON" yazım hatası, doğrusu Epson; ERP12 eski sitedeki "ERP12 ile tanışın" duyurusundan).
 // AnyDesk iş ortağı değil uzak destek aracıdır; rozetlerde yer almaz. Logo kullanılmaz, sade metin rozeti.
-const brands = ["Berqnet", "Dahua", "Epson"];
+const brands = ["Berqnet", "Dahua", "Epson", "ERP12"];
 
 export default function Partners() {
   return (
@@ -17,9 +18,7 @@ export default function Partners() {
         ))}
       </ul>
       {/* Resmi iş ortaklığı durumu firma sahibinden onay bekliyor (ONAY_LISTESI.md #8) */}
-      <p className="mt-4 text-sm font-semibold text-accent-text">
-        [ONAY BEKLİYOR] Marka listesi ve resmi iş ortaklığı durumu
-      </p>
+      <PendingNote>Marka listesi ve resmi iş ortaklığı durumu</PendingNote>
     </Section>
   );
 }

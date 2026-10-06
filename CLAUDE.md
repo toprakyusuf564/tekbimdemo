@@ -38,6 +38,7 @@ Bu dosya projenin ana planı ve kurallarıdır. Her oturumda ve her alt ajanda g
 - **Uydurma veri YOK:** Sahte müşteri yorumu, sahte sayaç rakamı ("5000+ memnun müşteri" vb.), sahte fiyat, sahte sertifika yazılmaz.
 - Firma sahibinin onaylaması gereken her şey `[ONAY BEKLİYOR]` etiketiyle yazılır ve `ONAY_LISTESI.md` dosyasına eklenir (ör. fiyat aralıkları, "aynı gün yerinde servis" taahhüdü, iş ortağı listesi, gerçek rakamlar).
 - Eski siteden **alınmayacaklar:** slider, 2020 kampanyaları, 0 gösteren sayaçlar, "All" gibi İngilizce kalıntılar, boş menü linkleri, ayrı Instagram sayfası.
+- **Onay etiketi görünürlüğü:** `NEXT_PUBLIC_SHOW_PENDING` (varsayılan `true`). `true` iken `[ONAY BEKLİYOR]` etiketleri ve `PendingNote` görünür; `false` iken sadece etiketler gizlenir, içerik metni kalır. Etiket gizli olsa da onaysız (`approved: false`) SSS'ler FAQPage JSON-LD'ye girmez. Etiketler `PendingTag`/`PendingNote` bileşenleriyle çizilir; elle `[ONAY BEKLİYOR]` yazılmaz. Örnek değer `.env.example` içinde.
 - **Apostrof:** Tüm içerikte düz apostrof (`'`) kullanılır; tipografik (`’`) kullanılmaz.
 - Stok görsel indirme. Görsel gereken yerlerde sade SVG illüstrasyon/ikon veya nötr yer tutucu kullan. Logo dosyasını Yusuf `public/logo/` altına koyacak; yoksa metin logo kullan.
 

@@ -19,7 +19,8 @@ export const restaurantSegments = [
   "Paket servis yapan işletmeler",
 ];
 
-export type RestaurantFeature = { title: string; text?: string; pending?: boolean };
+// pending: onay bekliyor; pendingNote: etiketin yanındaki açıklama
+export type RestaurantFeature = { title: string; text?: string; pending?: boolean; pendingNote?: string };
 
 export const restaurantFeatures: RestaurantFeature[] = [
   { title: "Masa yönetimi" },
@@ -28,13 +29,17 @@ export const restaurantFeatures: RestaurantFeature[] = [
   { title: "Personel ve müşteri takibi" },
   { title: "Android garson sipariş uygulaması" },
   { title: "Tablet menü uygulaması" },
-  { title: "Yemek Sepeti entegrasyonu" },
+  { title: "Yemeksepeti entegrasyonu", pending: true, pendingNote: "Güncelliği teyit edilecek" },
   { title: "Caller ID entegrasyonu" },
   { title: "Rezervasyon ve puan kart uygulaması" },
   { title: "Çoklu dil ve para birimi desteği" },
   { title: "Raporlama", text: "X/Z raporları, satış analitiği ve karlılık raporları." },
-  { title: "Yazar kasa entegrasyonu", pending: true },
-  { title: "Adisyon, mutfak/bar yazıcısına sipariş, kasa ve ödeme", pending: true },
+  { title: "Yazar kasa entegrasyonu", pending: true, pendingNote: "Firma sahibi teyit edecek" },
+  {
+    title: "Adisyon, mutfak/bar yazıcısına sipariş, kasa ve ödeme",
+    pending: true,
+    pendingNote: "Eski sayfada geçmiyor",
+  },
 ];
 
 // Tekbim'in OT-VT ürün grubundan; yazılımla uyum ve yazar kasa entegrasyonu onay bekliyor

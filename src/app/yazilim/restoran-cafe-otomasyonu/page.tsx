@@ -22,7 +22,7 @@ const path = "/yazilim/restoran-cafe-otomasyonu";
 export const metadata = buildMetadata({
   title: "Aydın Restoran Cafe Otomasyonu | Tekbim Bilgisayar",
   description:
-    "Aydın'da restoran, cafe, pastane ve fast food için otomasyon: masa yönetimi, stok, raporlama ve Yemek Sepeti entegrasyonu. Tekbim Bilgisayar.",
+    "Aydın'da restoran, cafe, pastane ve fast food için otomasyon: masa yönetimi, stok kontrolü ve raporlama. Tekbim Bilgisayar.",
   path,
 });
 
@@ -38,7 +38,13 @@ const faqItems: FaqItem[] = [
     question: "Hangi özellikleri içeriyor?",
     approved: true,
     answer:
-      "Masa yönetimi, stok kontrolü, veresiye takibi, personel ve müşteri takibi, rezervasyon ve puan kart uygulaması, çoklu dil ve para birimi desteği, Android garson sipariş ve tablet menü uygulamaları, Yemek Sepeti ve Caller ID entegrasyonu ile X/Z raporları, satış analitiği ve karlılık raporları.",
+      "Masa yönetimi, stok kontrolü, veresiye takibi, personel ve müşteri takibi, rezervasyon ve puan kart uygulaması, çoklu dil ve para birimi desteği, Android garson sipariş ve tablet menü uygulamaları, Caller ID entegrasyonu ile X/Z raporları, satış analitiği ve karlılık raporları.",
+  },
+  {
+    question: "Yemeksepeti entegrasyonu var mı?",
+    approved: false,
+    answer: "Yemeksepeti entegrasyonu konusunda güncel bilgi için bizi arayabilirsiniz.",
+    action: { label: "Bizi arayın", href: `tel:${site.phone.tel}` },
   },
   {
     question: "Yazar kasa ile entegre çalışıyor mu?",
@@ -86,7 +92,7 @@ export default function RestoranCafeOtomasyonuPage() {
 
       <Section labelledBy="kimler-icin">
         <SectionTitle id="kimler-icin" eyebrow="Kimler için" title="Gıda sektöründeki işletmeler için" description={restaurantProduct.intro} />
-        <PendingNote>Yazılımın Tekbim&apos;in kendi ürünü mü, satışını yaptığı bir ürün mü olduğu</PendingNote>
+        <PendingNote>Yazılım büyük ihtimalle ERP12&apos;ye ait; Tekbim&apos;in çözüm ortağı olduğu teyit edilecek</PendingNote>
         <ul className="mt-8 flex flex-wrap gap-3">
           {restaurantSegments.map((s) => (
             <li key={s} data-reveal className="rounded-full border border-border bg-surface px-5 py-2 font-semibold">
@@ -103,7 +109,7 @@ export default function RestoranCafeOtomasyonuPage() {
             <li key={f.title} data-reveal className="rounded-xl border border-border bg-bg p-5">
               <h3 className="font-semibold">{f.title}</h3>
               {f.text && <p className="mt-2 text-sm text-muted">{f.text}</p>}
-              {f.pending && <PendingNote>Eski sayfada geçmiyor veya onay bekliyor</PendingNote>}
+              {f.pending && <PendingNote>{f.pendingNote ?? "Onay bekliyor"}</PendingNote>}
             </li>
           ))}
         </ul>

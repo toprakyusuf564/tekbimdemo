@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { FaqEntry } from "@/lib/seo";
+import { PendingTag } from "./PendingNote";
 
 export type FaqItem = FaqEntry & {
   // Yanıtın altında gösterilen isteğe bağlı bağlantı
@@ -16,9 +17,7 @@ export default function Faq({ items }: { items: FaqItem[] }) {
           <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold [&::-webkit-details-marker]:hidden">
             <span>
               {item.question}
-              {!item.approved && (
-                <span className="ml-2 text-xs font-semibold text-accent-text">[ONAY BEKLİYOR]</span>
-              )}
+              {!item.approved && <PendingTag className="ml-2 text-xs" />}
             </span>
             <span aria-hidden="true" className="shrink-0 text-accent-text transition-transform group-open:rotate-45">+</span>
           </summary>
