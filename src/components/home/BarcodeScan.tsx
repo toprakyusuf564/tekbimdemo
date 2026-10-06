@@ -11,7 +11,8 @@ const bars = widths.reduce<{ x: number; w: number }[]>((acc, w) => {
 const last = bars[bars.length - 1];
 const width = last.x + last.w + 6;
 
-export default function BarcodeScan() {
+// className ile barkod rengi zemine göre değiştirilir (varsayılan: yazı rengi)
+export default function BarcodeScan({ className = "text-fg" }: { className?: string }) {
   return (
     <svg
       aria-hidden="true"
@@ -19,7 +20,7 @@ export default function BarcodeScan() {
       width={width}
       height="84"
       viewBox={`0 0 ${width} 84`}
-      className="text-fg"
+      className={className}
     >
       {bars.map((b) => (
         <rect key={b.x} x={b.x} y="6" width={b.w} height="72" fill="currentColor" opacity="0.75" />

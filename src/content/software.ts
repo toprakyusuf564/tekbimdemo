@@ -12,7 +12,7 @@ export const software: SoftwareSolution[] = [
   {
     slug: "restoran-cafe-otomasyonu",
     title: "Restoran / Cafe Otomasyonu",
-    summary: "Restoran ve cafeler için sipariş, adisyon ve kasa otomasyonu.",
+    summary: "Restoran ve cafeler için masa yönetimi, stok ve raporlama özellikli otomasyon sistemi.",
     href: "/yazilim/restoran-cafe-otomasyonu",
     available: true,
   },

@@ -32,8 +32,21 @@
 - [x] Doğrulama: `tsc --noEmit` ve lint temiz; sayfa 200, tek h1, title 53 / description 147 karakter
 - [ ] formtakip.net doğrudan adresleri doğrulanacak (Yusuf)
 
+### Düzeltmeler (Adım 3 sonrası)
+- [x] Süreç kuralı güncellendi (3001: Yusuf, 3002: Claude), apostrof kuralı (bölüm 4)
+- [x] formtakip linkleri: `/default.asp` ve `/yetkili.asp`, protokol `site.ts` sabitinde (`FORMTAKIP_PROTOCOL`)
+- [x] FAQPage JSON-LD'ye sadece `approved: true` sorular girer (`faqJsonLd` içinde genel kural)
+- [x] Bakım anlaşması/web servis metni eski siteden doğrulandı (ONAY #13 kapandı)
+
+### Adım 4 — `/yazilim/restoran-cafe-otomasyonu`
+- [x] İçerik eski sayfadan (tekbim.net/portfolio/our-project-01/): ERP12 Restoran, hedef sektörler, özellikler; eski sayfada olmayan iddia yok
+- [x] PageHero (barkod süsü), kimler için, özellikler, donanım, kurulum/destek, SSS, CtaBand ("Demo / Teklif İste")
+- [x] JSON-LD: Service + FAQPage (3 onaylı soru) + BreadcrumbList
+- [x] Onay bekleyenler `ONAY_LISTESI.md` #14–#19
+- [x] Doğrulama: `tsc --noEmit` ve lint temiz; sayfa 200, tek h1, title 50 / description 141 karakter
+- [ ] formtakip https desteği Yusuf tarafından kontrol edilecek
+
 ### Kalan
-- [ ] Adım 4 — `/yazilim/restoran-cafe-otomasyonu`
 - [ ] Adım 5 — `/bakim-anlasmalari`
 - [ ] Adım 6 — `/iletisim`
 - [ ] Adım 7 — Build + Lighthouse kontrolü

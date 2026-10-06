@@ -17,3 +17,9 @@
 | 11 | SSS: "Onarım öncesi onayım alınıyor mu?" yanıtı (süreç adımlarıyla tutarlı olmalı) | `/hizmetler/teknik-servis` SSS | [ONAY BEKLİYOR] |
 | 12 | formtakip.net doğrudan adresleri: `/default.asp` (cihaz sorgulama), `/yetkili.asp` (kurumsal giriş). Eski sitede bu linkler http. https desteklenmiyorsa firma sahibine güvenlik notu iletilecek. Protokol `site.ts` içinde tek sabit (`FORMTAKIP_PROTOCOL`) | `site.ts`, teknik servis sayfası, footer, ana sayfa | Yusuf https'i kontrol edip bildirecek |
 | 13 | Bakım anlaşmalı müşterilerin web servis üzerinden arıza kaydı oluşturması ve web servisin bakım anlaşmalılara ücretsiz olması | `/hizmetler/teknik-servis` | Eski siteden doğrulandı (tekbim.net/service/laptop-repair/) |
+| 14 | Yazılımın adı "ERP12 Restoran" (eski sayfadan) ve Tekbim'in kendi ürünü mü yoksa satılan bir ürün mü olduğu | `/yazilim/restoran-cafe-otomasyonu`, `restaurant.ts` | [ONAY BEKLİYOR] |
+| 15 | "Adisyon, mutfak/bar yazıcısına sipariş, kasa ve ödeme" özellik kategorileri (eski sayfada geçmiyor) | `restaurant.ts` | [ONAY BEKLİYOR] |
+| 16 | Yazar kasa entegrasyonu (eski sayfada geçiyor, firma sahibi teyit edecek) ve OT-VT donanımlarının (dokunmatik POS, fiş yazıcı, el terminali, yeni nesil yazar kasa) yazılımla uyumu | Restoran otomasyonu sayfası | [ONAY BEKLİYOR] |
+| 17 | Kurulum ve destek süreci ayrıntıları | Restoran otomasyonu sayfası | [ONAY BEKLİYOR] |
+| 18 | SSS'de onaysız yanıtlar: yazar kasa, donanım, kurulum ve destek (JSON-LD'ye girmez, sayfada etiketli) | Restoran otomasyonu sayfası | [ONAY BEKLİYOR] |
+| 19 | Ana sayfadaki restoran/cafe kartı özet cümlesi yeniden yazıldı (eski sayfada geçen özelliklere göre) | `software.ts` | [ONAY BEKLİYOR] |
