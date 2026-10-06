@@ -47,9 +47,14 @@ export const site = {
     query: `${formtakipBase}/default.asp`, // Cihaz durumu sorgulama
     corporate: `${formtakipBase}/yetkili.asp`, // Kurumsal giriş
   },
+  // Aydınlatma Metni adresi: firma metni hazırlayana kadar null (ONAY_LISTESI.md #25)
+  kvkkUrl: null as string | null,
   // Logo dosyası gelene kadar metin logo kullanılır (public/logo/ altına konacak)
   logo: null as string | null,
 } as const;
+
+// Google Maps gömülü harita (adresle arama; koordinat kullanılmaz). Sadece kullanıcı isteyince yüklenir.
+export const mapsEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(site.address.full)}&output=embed`;
 
 // Google Maps adres araması (yol tarifi için)
 export const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.address.full)}`;

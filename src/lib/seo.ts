@@ -104,3 +104,14 @@ export function breadcrumbJsonLd(trail: { name: string; path: string }[]) {
     })),
   };
 }
+
+// İletişim sayfası için ContactPage (LocalBusiness zaten tüm sitede var)
+export function contactPageJsonLd(opts: { name: string; path: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: opts.name,
+    url: absoluteUrl(opts.path),
+    mainEntity: { "@type": "ComputerStore", name: site.name, url: site.url },
+  };
+}

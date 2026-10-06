@@ -55,8 +55,19 @@
 - [x] JSON-LD: Service (fiyat yok) + FAQPage (onaylı sorular) + BreadcrumbList
 - [x] Onay bekleyenler `ONAY_LISTESI.md` #21–#24
 
+### Adım 6 — `/iletisim`
+- [x] İletişim bilgileri (site.ts'ten), harita (sadece "Haritayı göster" ile yüklenir, adresle arama) + "Yol tarifi al"
+- [x] Form (`id="servis-talebi"`): doğrulama, `?konu=` ile tür seçimi (Suspense + useSearchParams), WhatsApp + mailto, KVKK onayı (Aydınlatma Metni yer tutucu), aria-live hata/durum
+- [x] Tüm "Servis Talebi" butonları `?konu=servis`, restoran "Demo / Teklif İste" `?konu=demo`, bakım "Teklif iste" `?konu=bakim`
+- [x] JSON-LD: ContactPage + BreadcrumbList
+- [x] Onay bekleyenler `ONAY_LISTESI.md` #25–#26
+- [x] Doğrulama: `tsc --noEmit` ve lint temiz; 5 Faz 1 sayfası + sitemap + robots 200, sayfalardaki tüm iç linkler 200
+- [ ] Formun tarayıcıda elle denenmesi (curl ile etkileşim test edilemedi): ?konu= ön seçimi, doğrulama mesajları, WhatsApp/mailto
+
+### Faz 1 durumu
+Beş sayfa tamam. Faz 1 onayı ve Adım 7 (build + Lighthouse) sırada.
+
 ### Kalan
-- [ ] Adım 6 — `/iletisim`
 - [ ] Adım 7 — Build + Lighthouse kontrolü
 
 ## Faz 2

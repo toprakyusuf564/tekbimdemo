@@ -28,3 +28,5 @@
 | 22 | Karşılaştırma tablosu: ödeme şekli, müdahale süresi, yerinde servis, uzaktan destek (AnyDesk), periyodik bakım — her paket için. Tahmin yazılmadı; hücreler etiketli. Web servis satırı eski siteden doğrulandı | `/bakim-anlasmalari`, `maintenance.ts` | [ONAY BEKLİYOR] |
 | 23 | Bakım anlaşmaları SSS'de onaysız yanıtlar: fiyat, müdahale süresi, yerinde servis (JSON-LD'ye girmez) | `/bakim-anlasmalari` | [ONAY BEKLİYOR] |
 | 24 | "Kimler için?" bölümü genel anlatım (ofis, mağaza, restoran, çok bilgisayarlı işletme) | `maintenance.ts` | [ONAY BEKLİYOR] |
+| 25 | KVKK Aydınlatma Metni: formdaki "Aydınlatma Metni" şimdilik linksiz yer tutucu; firma metni hazırlamalı, sonra `site.ts` içindeki `kvkkUrl` doldurulacak | `/iletisim`, `site.ts` | [ONAY BEKLİYOR] |
+| 26 | Form gönderimi demo: WhatsApp (wa.me) veya e-posta (mailto) taslağı hazırlar; canlıda servis sistemine kaydedilecek | `ContactForm.tsx` | Canlıya geçişte yapılacak |
