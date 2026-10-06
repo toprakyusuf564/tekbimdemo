@@ -1,6 +1,8 @@
 // Bakım anlaşması paketleri. Kaynak: tekbim.net/service/laptop-repair/ (üç anlaşma türü).
 // Fiyat ve paket bazlı kapsam firma sahibinden gelene kadar onay bekliyor (ONAY_LISTESI.md #1, #2, #21, #22).
 
+import { FORMTAKIP_ACTIVE } from "./site";
+
 export type MaintenancePlan = {
   slug: string;
   title: string;
@@ -23,8 +25,10 @@ export const comparisonRows: { label: string; cells: (string | undefined)[] }[] 
   { label: "Müdahale süresi", cells: [undefined, undefined, undefined] },
   { label: "Yerinde servis", cells: [undefined, undefined, undefined] },
   { label: "Uzaktan destek (AnyDesk)", cells: [undefined, undefined, undefined] },
-  // Eski siteden doğrulandı: bakım anlaşmalı müşteriler web servisi ücretsiz kullanır
-  { label: "Web servis ile arıza kaydı", cells: ["Var, ücretsiz", "Var, ücretsiz", "Var, ücretsiz"] },
+  // Eski siteden doğrulandı ama formtakip.net'e bağlı: sistem erişilemezken satır onay bekler
+  FORMTAKIP_ACTIVE
+    ? { label: "Web servis ile arıza kaydı", cells: ["Var, ücretsiz", "Var, ücretsiz", "Var, ücretsiz"] }
+    : { label: "Arıza kaydı oluşturma", cells: [undefined, undefined, undefined] },
   { label: "Periyodik bakım", cells: [undefined, undefined, undefined] },
 ];
 

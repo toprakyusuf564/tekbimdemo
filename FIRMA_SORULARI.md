@@ -7,6 +7,14 @@ Cevaplayan: ______________________  Tarih: ____ / ____ / ________
 
 ---
 
+## Önemli — önce bu soru
+
+**Ö1.** formtakip.net servis takip sisteminiz şu an erişilemiyor (alan adı DNS hatası, 6 Ekim 2026). Mevcut tekbim.net de bu adrese link veriyor. Alan adının süresi veya DNS ayarları kontrol edilmeli. Yeni sitede bu sistemi entegre bir modül olarak yeniden kurmak ister misiniz?
+Cevap: ........................................................................
+(Bu çözülene kadar yeni sitede cihaz sorgulama WhatsApp ve telefona yönlendiriyor.)
+
+---
+
 ## 1. Hizmetler ve vaatler
 
 1. Servise getirilen cihazlar için **"ücretsiz arıza tespiti"** yapıyor musunuz? Her cihaz için mi, yoksa bazı durumlarda mı?
@@ -47,7 +55,7 @@ Cevaplayan: ______________________  Tarih: ____ / ____ / ________
 10. Bakım anlaşması sorularında "fiyat nedir, müdahale süresi nedir, yerinde servis var mı" gibi sorulara vereceğiniz kısa yanıtlar:
     Cevap: ........................................................................
 
-11. Bakım anlaşmalı müşterilerin web servis üzerinden arıza kaydı açabilmesi ve bunun ücretsiz olması doğru mu? (Eski sitenizde yazıyordu, güncel mi?)
+11. Bakım anlaşmalı müşterilerin web servis (formtakip) üzerinden arıza kaydı açabilmesi ve bunun ücretsiz olması hâlâ geçerli mi? (Sistem şu an erişilemediği için sitede bu bilgiyi yazmıyoruz.)
     Cevap: ........................................................................
 
 ## 3. Markalar ve iş ortaklıkları
@@ -89,7 +97,7 @@ Cevaplayan: ______________________  Tarih: ____ / ____ / ________
 22. Harita için dükkânınızın tam konumunu (Google Haritalar'da "Paylaş" ile gelen bağlantı) iletir misiniz?
     Cevap: ........................................................................
 
-23. Servis takip adresiniz formtakip.net'in **güvenli (https)** bağlantıyla açıldığını teyit edebilir misiniz? Açılmıyorsa bunu formtakip.net'i yöneten kişiye iletmek gerekir.
+23. formtakip.net sistemini kim yönetiyor (alan adı ve sunucu sağlayıcısı)? Sistem tekrar açıldığında bağlantının güvenli (https) olması da gerekir.
     Cevap: ........................................................................
 
 24. Sitedeki iletişim formu şimdilik müşterinin WhatsApp'ına veya e-postasına hazır mesaj açıyor. Canlıda gelen talepler **nerede toplansın** (e-posta, servis programınız)? Kim bakacak?

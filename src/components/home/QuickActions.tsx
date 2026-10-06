@@ -1,13 +1,15 @@
 import Link from "next/link";
 import Icon, { type IconName } from "@/components/Icon";
 import Section from "@/components/Section";
-import { mapsUrl, site, whatsappLink } from "@/content/site";
+import { FORMTAKIP_ACTIVE, deviceStatusWhatsappLink, mapsUrl, site, whatsappLink } from "@/content/site";
 
 type Action = { title: string; text: string; href: string; icon: IconName };
 
 const actions: Action[] = [
   { title: "Servis talebi oluştur", text: "Cihazınız için servis kaydı açın.", href: site.serviceRequestHref, icon: "wrench" },
-  { title: "Cihazımı sorgula", text: "Servisteki cihazınızın durumunu görün.", href: site.serviceTrack.query, icon: "search" },
+  FORMTAKIP_ACTIVE
+    ? { title: "Cihazımı sorgula", text: "Servisteki cihazınızın durumunu görün.", href: site.serviceTrack.query, icon: "search" }
+    : { title: "Cihazımı sorgula", text: "Durumu WhatsApp veya telefonla öğrenin.", href: deviceStatusWhatsappLink, icon: "search" },
   { title: "Uzak destek", text: "AnyDesk ile bilgisayarınıza uzaktan bağlanalım.", href: site.remoteSupportUrl, icon: "monitor" },
   { title: "WhatsApp", text: "Bize WhatsApp'tan yazın.", href: whatsappLink(), icon: "chat" },
   { title: "Yol tarifi", text: "Adresimize Google Haritalar'dan ulaşın.", href: mapsUrl, icon: "pin" },

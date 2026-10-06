@@ -7,7 +7,8 @@ import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
 import ServiceSteps from "@/components/ServiceSteps";
 import { technicalServiceScope } from "@/content/services";
-import { site, whatsappLink } from "@/content/site";
+import PendingNote from "@/components/PendingNote";
+import { FORMTAKIP_ACTIVE, deviceStatusWhatsappLink, site, whatsappLink } from "@/content/site";
 import { buildMetadata, faqJsonLd, serviceJsonLd } from "@/lib/seo";
 
 const path = "/hizmetler/teknik-servis";
@@ -37,8 +38,13 @@ const faqItems: FaqItem[] = [
   {
     question: "Cihazımın durumunu nasıl takip ederim?",
     approved: true,
-    answer: "Servisteki cihazınızın durumunu Tekbim'in online takip sistemi formtakip.net üzerinden sorgulayabilirsiniz.",
-    action: { label: "Cihazımı sorgula", href: site.serviceTrack.query },
+    answer: FORMTAKIP_ACTIVE
+      ? "Servisteki cihazınızın durumunu Tekbim'in online takip sistemi formtakip.net üzerinden sorgulayabilirsiniz."
+      : "Servisteki cihazınızın durumunu WhatsApp veya telefonla sorabilirsiniz. Servis/kayıt numaranızı bildirmeniz yeterlidir.",
+    action: {
+      label: "Cihazımı sorgula",
+      href: FORMTAKIP_ACTIVE ? site.serviceTrack.query : deviceStatusWhatsappLink,
+    },
   },
   {
     question: "Uzaktan destek veriyor musunuz?",
@@ -91,20 +97,41 @@ export default function TeknikServisPage() {
       <ServiceSteps />
 
       <Section labelledBy="servis-takip">
-        <SectionTitle
-          id="servis-takip"
-          eyebrow="Servis takibi"
-          title="Cihazınızı online takip edin"
-          description="formtakip.net, Tekbim'in kendi online takip sistemidir."
-        />
-        <ul className="mt-6 list-disc space-y-1 pl-5 text-muted">
-          <li>Cihaz durumu sorgulama ile servisteki cihazınızın durumunu görebilirsiniz.</li>
-          <li>Kurumsal giriş ile kurumsal müşteriler kendi hesaplarına ulaşır.</li>
-        </ul>
-        <div className="mt-6 flex flex-wrap gap-3">
-          <ButtonLink href={site.serviceTrack.query} variant="secondary">Cihazımı sorgula</ButtonLink>
-          <ButtonLink href={site.serviceTrack.corporate} variant="secondary">Kurumsal giriş</ButtonLink>
-        </div>
+        {FORMTAKIP_ACTIVE ? (
+          <>
+            <SectionTitle
+              id="servis-takip"
+              eyebrow="Servis takibi"
+              title="Cihazınızı online takip edin"
+              description="formtakip.net, Tekbim'in kendi online takip sistemidir."
+            />
+            <ul className="mt-6 list-disc space-y-1 pl-5 text-muted">
+              <li>Cihaz durumu sorgulama ile servisteki cihazınızın durumunu görebilirsiniz.</li>
+              <li>Kurumsal giriş ile kurumsal müşteriler kendi hesaplarına ulaşır.</li>
+            </ul>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <ButtonLink href={site.serviceTrack.query} variant="secondary">Cihazımı sorgula</ButtonLink>
+              <ButtonLink href={site.serviceTrack.corporate} variant="secondary">Kurumsal giriş</ButtonLink>
+            </div>
+          </>
+        ) : (
+          <>
+            <SectionTitle
+              id="servis-takip"
+              eyebrow="Servis takibi"
+              title="Cihazınızın durumunu sorun"
+              description="Servisteki cihazınızın durumunu WhatsApp veya telefonla öğrenebilirsiniz."
+            />
+            <ul className="mt-6 list-disc space-y-1 pl-5 text-muted">
+              <li>Servis/kayıt numaranızı bildirmeniz yeterlidir.</li>
+              <li>WhatsApp düğmesi hazır bir mesajla açılır, numarayı yazıp göndermeniz yeterlidir.</li>
+            </ul>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <ButtonLink href={deviceStatusWhatsappLink} variant="secondary">WhatsApp ile sorgula</ButtonLink>
+              <ButtonLink href={`tel:${site.phone.tel}`} variant="secondary">Telefonla sorgula</ButtonLink>
+            </div>
+          </>
+        )}
       </Section>
 
       <Section labelledBy="bakim" tone="surface">
@@ -112,8 +139,13 @@ export default function TeknikServisPage() {
           id="bakim"
           eyebrow="Kurumsal müşteriler"
           title="Bakım anlaşmasıyla yanınızdayız"
-          description="Bakım anlaşmalı müşterilerimiz web servis üzerinden kendi arıza kaydını oluşturabilir; kayıt sistemimize otomatik düşer. Bakım anlaşmasından yararlananlar web servisi ücretsiz kullanabilir."
+          description={
+            FORMTAKIP_ACTIVE
+              ? "Bakım anlaşmalı müşterilerimiz web servis üzerinden kendi arıza kaydını oluşturabilir; kayıt sistemimize otomatik düşer. Bakım anlaşmasından yararlananlar web servisi ücretsiz kullanabilir."
+              : "Düzenli desteğe ihtiyaç duyan işletmeler için bakım anlaşmaları sunuyoruz. Kapsam teklif aşamasında netleşir."
+          }
         />
+        {!FORMTAKIP_ACTIVE && <PendingNote>Bakım anlaşmalı müşteriler için arıza kaydı yöntemi</PendingNote>}
         <div className="mt-6">
           <ButtonLink href="/bakim-anlasmalari" variant="secondary">Bakım anlaşmalarını inceleyin</ButtonLink>
         </div>

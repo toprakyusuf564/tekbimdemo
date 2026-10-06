@@ -7,7 +7,7 @@ import PendingNote, { PendingTag } from "@/components/PendingNote";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
 import { comparisonRows, maintenanceAudience, maintenancePlans } from "@/content/maintenance";
-import { contactFormHref, site, whatsappLink } from "@/content/site";
+import { FORMTAKIP_ACTIVE, contactFormHref, site, whatsappLink } from "@/content/site";
 import { showPending } from "@/lib/env";
 import { buildMetadata, faqJsonLd, serviceJsonLd } from "@/lib/seo";
 
@@ -18,7 +18,9 @@ const quoteHref = contactFormHref("bakim");
 export const metadata = buildMetadata({
   title: "Aydın Kurumsal Bilgisayar Bakım Anlaşması | Tekbim",
   description:
-    "Aydın'da ofis, mağaza ve restoranlar için yıllık, aylık veya servis başına bilgisayar bakım anlaşması. Web servisle arıza kaydı ücretsiz. Teklif alın.",
+    FORMTAKIP_ACTIVE
+      ? "Aydın'da ofis, mağaza ve restoranlar için yıllık, aylık veya servis başına bilgisayar bakım anlaşması. Web servisle arıza kaydı ücretsiz. Teklif alın."
+      : "Aydın'da ofis, mağaza ve restoranlar için yıllık, aylık veya servis başına bilgisayar bakım anlaşması. Kapsam teklif aşamasında netleşir.",
   path,
 });
 
@@ -29,12 +31,18 @@ const faqItems: FaqItem[] = [
     approved: true,
     answer: "Üç tür var: yıllık destek anlaşması, aylık anlaşma ve servis başına anlaşma.",
   },
-  {
-    question: "Web servis nedir?",
-    approved: true,
-    answer:
-      "Bakım anlaşmalı müşterilerimiz web servis üzerinden kendi arıza kaydını oluşturur; kayıt sistemimize otomatik olarak düşer. Bakım anlaşmasından yararlananlar web servisi ücretsiz kullanabilir.",
-  },
+  FORMTAKIP_ACTIVE
+    ? {
+        question: "Web servis nedir?",
+        approved: true,
+        answer:
+          "Bakım anlaşmalı müşterilerimiz web servis üzerinden kendi arıza kaydını oluşturur; kayıt sistemimize otomatik olarak düşer. Bakım anlaşmasından yararlananlar web servisi ücretsiz kullanabilir.",
+      }
+    : {
+        question: "Arıza kaydı nasıl oluşturulur?",
+        approved: false,
+        answer: "Kapsam teklif aşamasında netleşir.",
+      },
   {
     question: "Bakım anlaşmasının fiyatı nedir?",
     approved: false,
@@ -103,10 +111,15 @@ export default function BakimAnlasmalariPage() {
       <Section labelledBy="web-servis" tone="surface">
         <SectionTitle
           id="web-servis"
-          eyebrow="Web servis"
-          title="Arıza kaydını kendiniz oluşturun"
-          description="Bakım anlaşmalı müşterilerimiz web servis üzerinden kendi arıza kaydını oluşturur; kayıt sistemimize otomatik olarak düşer. Bakım anlaşmasından yararlananlar bu hizmeti ücretsiz kullanabilir."
+          eyebrow={FORMTAKIP_ACTIVE ? "Web servis" : "Arıza kaydı"}
+          title={FORMTAKIP_ACTIVE ? "Arıza kaydını kendiniz oluşturun" : "Arıza kaydı ve destek kapsamı"}
+          description={
+            FORMTAKIP_ACTIVE
+              ? "Bakım anlaşmalı müşterilerimiz web servis üzerinden kendi arıza kaydını oluşturur; kayıt sistemimize otomatik olarak düşer. Bakım anlaşmasından yararlananlar bu hizmeti ücretsiz kullanabilir."
+              : "Kapsam teklif aşamasında netleşir."
+          }
         />
+        {!FORMTAKIP_ACTIVE && <PendingNote>Arıza kaydı yöntemi ve kapsamı</PendingNote>}
       </Section>
 
       <Section labelledBy="karsilastirma">
@@ -174,7 +187,9 @@ export default function BakimAnlasmalariPage() {
         data={serviceJsonLd({
           name: "Kurumsal bilgisayar bakım anlaşması",
           description:
-            "Aydın'da yıllık destek, aylık ve servis başına bilgisayar bakım anlaşmaları. Bakım anlaşmalı müşteriler web servisle arıza kaydı oluşturabilir.",
+            FORMTAKIP_ACTIVE
+              ? "Aydın'da yıllık destek, aylık ve servis başına bilgisayar bakım anlaşmaları. Bakım anlaşmalı müşteriler web servisle arıza kaydı oluşturabilir."
+              : "Aydın'da yıllık destek, aylık ve servis başına bilgisayar bakım anlaşmaları. Kapsam teklif aşamasında netleşir.",
           path,
         })}
       />

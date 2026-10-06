@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Container from "./Container";
 import Icon, { type IconName } from "./Icon";
-import { mainNav, site } from "@/content/site";
+import { FORMTAKIP_ACTIVE, deviceStatusWhatsappLink, mainNav, site } from "@/content/site";
 
 // Alt bilgi: sosyal ikonlar, iletişim, çalışma saatleri, hızlı bağlantılar.
 // Banka bilgileri linki: sayfa Faz 2'de gelince eklenecek.
@@ -68,9 +68,15 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a className={linkClass} href={site.serviceTrack.home} target="_blank" rel="noopener noreferrer">
-                Servis takip (formtakip.net)
-              </a>
+              {FORMTAKIP_ACTIVE ? (
+                <a className={linkClass} href={site.serviceTrack.home} target="_blank" rel="noopener noreferrer">
+                  Servis takip (formtakip.net)
+                </a>
+              ) : (
+                <a className={linkClass} href={deviceStatusWhatsappLink} target="_blank" rel="noopener noreferrer">
+                  Cihaz durumu (WhatsApp)
+                </a>
+              )}
             </li>
           </ul>
         </div>

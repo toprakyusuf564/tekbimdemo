@@ -5,6 +5,11 @@ export const contactFormHref = (konu: "servis" | "demo" | "bakim" | "genel") => 
 
 // formtakip.net protokolü tek yerden yönetilir (https desteğini Yusuf doğrulayacak; ONAY_LISTESI.md #12)
 const FORMTAKIP_PROTOCOL = "https";
+
+// formtakip.net erişilemiyor (DNS hatası, 6 Ekim 2026; ONAY_LISTESI.md #12). false iken sitede
+// online takip/kurumsal giriş yerine WhatsApp ve telefon yönlendirmesi gösterilir.
+// Sistem tekrar çalışınca bu satırı true yapmak yeterlidir; adresler aşağıda duruyor.
+export const FORMTAKIP_ACTIVE = false;
 const formtakipBase = `${FORMTAKIP_PROTOCOL}://formtakip.net`;
 
 export const site = {
@@ -71,3 +76,8 @@ export const mainNav = [
 // Tüm sitede kullanılan ortak yardımcılar
 export const whatsappLink = (text = "Merhaba, bilgi almak istiyorum.") =>
   `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
+
+// Cihaz durumu sorgusu için hazır WhatsApp mesajı (FORMTAKIP_ACTIVE false iken kullanılır)
+export const deviceStatusWhatsappLink = whatsappLink(
+  "Merhaba, servisteki cihazımın durumunu öğrenmek istiyorum. Servis/kayıt no: ",
+);

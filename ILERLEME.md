@@ -106,6 +106,10 @@ Hedefin altında kalanlar: `/iletisim` LCP medyanı 2.70 s (en iyi tur 2.01 s, e
 ## Faz 2
 Faz 1 onaylandıktan sonra (CLAUDE.md bölüm 5).
 
+## formtakip düzeltmesi (6 Ekim 2026)
+- formtakip.net DNS hatası: `FORMTAKIP_ACTIVE=false` (`site.ts`). Cihaz sorgu WhatsApp/telefon, kurumsal giriş gizli, bakım sayfası "kapsam teklif aşamasında netleşir" + onay etiketi.
+- Geri açmak: `FORMTAKIP_ACTIVE = true`.
+
 ## Cloudflare Pages önizleme yayını (6 Ekim 2026)
 - Sunum build: `NEXT_PUBLIC_SITE_ENV=preview NEXT_PUBLIC_SHOW_PENDING=false npm run build` (robots Disallow, noindex, etiketler gizli doğrulandı).
 - Yükleme: `npx wrangler pages deploy out --project-name tekbimdemo` (giriş ve yükleme Yusuf tarafından).
