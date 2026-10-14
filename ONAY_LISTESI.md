@@ -30,3 +30,6 @@
 | 24 | "Kimler için?" bölümü genel anlatım (ofis, mağaza, restoran, çok bilgisayarlı işletme) | `maintenance.ts` | [ONAY BEKLİYOR] |
 | 25 | KVKK Aydınlatma Metni: formdaki "Aydınlatma Metni" şimdilik linksiz yer tutucu; firma metni hazırlamalı, sonra `site.ts` içindeki `kvkkUrl` doldurulacak | `/iletisim`, `site.ts` | [ONAY BEKLİYOR] |
 | 26 | Form gönderimi demo: WhatsApp (wa.me) veya e-posta (mailto) taslağı hazırlar; canlıda servis sistemine kaydedilecek | `ContactForm.tsx` | Canlıya geçişte yapılacak |
+| 27 | Logo: tekbim.net'teki logo dosyaları yalnızca 160x46 px (saydam PNG). 2x ekranda net görünmediği ve header lacivert olduğu için kullanılmadı, metin logo kaldı. **Yüksek çözünürlüklü veya vektörel (SVG/PDF/AI) logo dosyası istenecek.** | Header, footer, favicon, Open Graph | Firma sahibinden dosya beklenir |
+| 28 | Fotoğraflar: dükkân içi, dükkân dış cephe, servis tezgâhı, POS kurulum fotoğrafları firmadan alınacak (liste: `FOTOGRAF_LISTESI.md`). Gelene kadar sade yer tutucu görünür | Ana sayfa, teknik servis, restoran otomasyonu, iletişim | Firma sahibinden dosya beklenir |
+| 29 | Ana sayfa "Biz kimiz" metni: ilk cümle eski siteden (1994'te bilgisayar ve yan ürünleri satışı ve servis amacıyla kuruldu), ikinci cümle (hizmet özeti) bu sitede yazıldı | Ana sayfa `AboutStrip.tsx` | [ONAY BEKLİYOR] |

@@ -34,3 +34,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Fotoğraf hazırlama
+
+Firmadan gelen ham fotoğraflar (JPG/PNG/HEIC) `public/images/ham/` klasörüne konur (Git'e girmez).
+Dosya adı `src/content/photos.json` içindeki anahtarlardan biri olmalı (örn. `dukkan-dis.jpg`).
+
+```bash
+node scripts/fotograf-hazirla.mjs
+```
+
+Betik (sharp) dosyaları `public/images/<ad>.webp` olarak 1600x1200 ölçüsüne kırpıp yazar; `PhotoSlot` bileşeni dosyayı build'de bulup yer tutucunun yerine koyar. HEIC dönüşümü macOS `sips` ile yapılır. Liste ve çekim önerileri: `FOTOGRAF_LISTESI.md`.

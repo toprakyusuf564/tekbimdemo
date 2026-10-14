@@ -1,4 +1,5 @@
 import BarcodeScan from "@/components/home/BarcodeScan";
+import AboutStrip from "@/components/home/AboutStrip";
 import ContactStrip from "@/components/home/ContactStrip";
 import Hero from "@/components/home/Hero";
 import MaintenanceSummary from "@/components/home/MaintenanceSummary";
@@ -23,6 +24,7 @@ export default function HomePage() {
     <>
       <Hero />
       <QuickActions />
+      <AboutStrip />
       <ServiceSteps />
       <SolutionGrid id="hizmetler" eyebrow="Hizmetler" title="Hizmetlerimiz" items={services} />
       <SolutionGrid

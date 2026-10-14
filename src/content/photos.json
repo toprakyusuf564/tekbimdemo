@@ -1,0 +1,6 @@
+{
+  "dukkan-ic": { "dosya": "dukkan-ic.webp", "en": 1600, "boy": 1200, "ikon": "pin", "baslik": "Dükkânımız", "alt": "Tekbim Bilgisayar dükkânının içi, Efeler / Aydın" },
+  "servis-tezgahi": { "dosya": "servis-tezgahi.webp", "en": 1600, "boy": 1200, "ikon": "wrench", "baslik": "Servis tezgâhımız", "alt": "Tekbim Bilgisayar teknik servis tezgâhı ve atölyesi" },
+  "pos-kurulum": { "dosya": "pos-kurulum.webp", "en": 1600, "boy": 1200, "ikon": "monitor", "baslik": "Restoran ve cafe kurulumu", "alt": "Dokunmatik POS ekranı ile kurulmuş restoran otomasyonu" },
+  "dukkan-dis": { "dosya": "dukkan-dis.webp", "en": 1600, "boy": 1200, "ikon": "pin", "baslik": "Dükkânımızın dış cephesi", "alt": "Tekbim Bilgisayar dükkânının dış cephesi, Güzelhisar Mahallesi 47. Sokak, Efeler / Aydın" }
+}

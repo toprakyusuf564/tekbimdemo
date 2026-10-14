@@ -3,6 +3,7 @@ import ButtonLink from "@/components/ButtonLink";
 import CtaBand from "@/components/CtaBand";
 import Faq, { type FaqItem } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
+import PhotoSlot from "@/components/PhotoSlot";
 import PageHero from "@/components/PageHero";
 import PendingNote from "@/components/PendingNote";
 import Section from "@/components/Section";
@@ -91,8 +92,13 @@ export default function RestoranCafeOtomasyonuPage() {
       </PageHero>
 
       <Section labelledBy="kimler-icin">
-        <SectionTitle id="kimler-icin" eyebrow="Kimler için" title="Gıda sektöründeki işletmeler için" description={restaurantProduct.intro} />
-        <PendingNote>Yazılım büyük ihtimalle ERP12&apos;ye ait; Tekbim&apos;in çözüm ortağı olduğu teyit edilecek</PendingNote>
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+          <div>
+            <SectionTitle id="kimler-icin" eyebrow="Kimler için" title="Gıda sektöründeki işletmeler için" description={restaurantProduct.intro} />
+            <PendingNote>Yazılım büyük ihtimalle ERP12&apos;ye ait; Tekbim&apos;in çözüm ortağı olduğu teyit edilecek</PendingNote>
+          </div>
+          <PhotoSlot slot="pos-kurulum" />
+        </div>
         <ul className="mt-8 flex flex-wrap gap-3">
           {restaurantSegments.map((s) => (
             <li key={s} data-reveal className="rounded-full border border-border bg-surface px-5 py-2 font-semibold">

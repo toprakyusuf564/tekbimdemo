@@ -114,3 +114,4 @@ Faz 1 onaylandıktan sonra (CLAUDE.md bölüm 5).
 - Sunum build: `NEXT_PUBLIC_SITE_ENV=preview NEXT_PUBLIC_SHOW_PENDING=false npm run build` (robots Disallow, noindex, etiketler gizli doğrulandı).
 - Yükleme: `npx wrangler pages deploy out --project-name tekbimdemo` (giriş ve yükleme Yusuf tarafından).
 - `FIRMA_SORULARI.md` eklendi (ONAY_LISTESI #1-#26 sade sorulara çevrildi).
+- Görseller: firma logosu (160x46) yetersiz bulundu, metin logo kaldı; `PhotoSlot` + 4 fotoğraf alanı, "Biz kimiz" bölümü, `scripts/fotograf-hazirla.mjs`, `FOTOGRAF_LISTESI.md` eklendi.

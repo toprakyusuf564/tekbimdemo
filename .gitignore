@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Örnek env dosyası Git'e dahil
 !.env.example
+
+# Ham fotoğraflar (betikle işlenir, repoya girmez)
+/public/images/ham/

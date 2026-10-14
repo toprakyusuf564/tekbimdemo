@@ -3,6 +3,7 @@ import ContactForm from "@/components/contact/ContactForm";
 import MapEmbed from "@/components/contact/MapEmbed";
 import Icon, { type IconName } from "@/components/Icon";
 import JsonLd from "@/components/JsonLd";
+import PhotoSlot from "@/components/PhotoSlot";
 import PageHero from "@/components/PageHero";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
@@ -83,7 +84,8 @@ export default function IletisimPage() {
 
       <Section labelledBy="harita" tone="surface">
         <SectionTitle id="harita" eyebrow="Harita" title="Adresimiz" />
-        <div className="mt-8">
+        <div className="mt-8 grid items-start gap-6 lg:grid-cols-2">
+          <PhotoSlot slot="dukkan-dis" />
           <MapEmbed />
         </div>
         <div className="mt-4">

@@ -2,6 +2,7 @@ import ButtonLink from "@/components/ButtonLink";
 import CtaBand from "@/components/CtaBand";
 import Faq, { type FaqItem } from "@/components/Faq";
 import JsonLd from "@/components/JsonLd";
+import PhotoSlot from "@/components/PhotoSlot";
 import PageHero from "@/components/PageHero";
 import Section from "@/components/Section";
 import SectionTitle from "@/components/SectionTitle";
@@ -83,7 +84,10 @@ export default function TeknikServisPage() {
       </PageHero>
 
       <Section labelledBy="kapsam">
-        <SectionTitle id="kapsam" eyebrow="Kapsam" title="Neler yapıyoruz?" />
+        <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
+          <SectionTitle id="kapsam" eyebrow="Kapsam" title="Neler yapıyoruz?" />
+          <PhotoSlot slot="servis-tezgahi" />
+        </div>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {technicalServiceScope.map((s) => (
             <li key={s.title} data-reveal className="rounded-xl border border-border bg-surface p-5">

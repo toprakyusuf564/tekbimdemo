@@ -40,6 +40,7 @@ Bu dosya projenin ana planı ve kurallarıdır. Her oturumda ve her alt ajanda g
 - Eski siteden **alınmayacaklar:** slider, 2020 kampanyaları, 0 gösteren sayaçlar, "All" gibi İngilizce kalıntılar, boş menü linkleri, ayrı Instagram sayfası.
 - **Onay etiketi görünürlüğü:** `NEXT_PUBLIC_SHOW_PENDING` (varsayılan `true`). `true` iken `[ONAY BEKLİYOR]` etiketleri ve `PendingNote` görünür; `false` iken sadece etiketler gizlenir, içerik metni kalır. Etiket gizli olsa da onaysız (`approved: false`) SSS'ler FAQPage JSON-LD'ye girmez. Etiketler `PendingTag`/`PendingNote` bileşenleriyle çizilir; elle `[ONAY BEKLİYOR]` yazılmaz. Örnek değer `.env.example` içinde.
 - **Apostrof:** Tüm içerikte düz apostrof (`'`) kullanılır; tipografik (`’`) kullanılmaz.
+- **Eski siteden görsel alınmaz:** tekbim.net'teki hizmet kartı fotoğrafları (service-*.jpg), proje görselleri (project-*.jpg), yazılım/duyuru görselleri ve marka logoları indirilmez, kullanılmaz (tema demo görselleri veya başka sitelerden alınmış, telif durumu belirsiz). Marka logoları yerine metin rozetleri kalır (ortaklık onayı bekleniyor). Fotoğraflar `PhotoSlot` alanlarına firmanın kendi çektiği dosyalarla konur (bkz. `FOTOGRAF_LISTESI.md`). Tek istisna firmanın kendi logosudur ve yeterli kalitedeyse kullanılır.
 - Stok görsel indirme. Görsel gereken yerlerde sade SVG illüstrasyon/ikon veya nötr yer tutucu kullan. Logo dosyasını Yusuf `public/logo/` altına koyacak; yoksa metin logo kullan.
 
 ## 5. Site haritası
