@@ -119,6 +119,18 @@ body {
   transform: none;
 }
 
+/* Mobilde (<768px) belirme daha sakin: en fazla 12px, 300ms, sıralı gecikme yok */
+@media (max-width: 767px) {
+  .reveal-init {
+    transform: translateY(12px);
+    transition-duration: 0.3s;
+    transition-delay: 0ms;
+  }
+  .reveal-init.reveal-in {
+    transform: none;
+  }
+}
+
 /* Hareket azaltma tercihi olanlar için tüm animasyonlar durur */
 @media (prefers-reduced-motion: reduce) {
   * {

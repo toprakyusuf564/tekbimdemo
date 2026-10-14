@@ -28,7 +28,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="rounded-xl border border-white/15 bg-white/5 p-6">
+        <div className="rounded-xl border border-white/15 bg-[color-mix(in_srgb,var(--chrome),white_8%)] p-6">
           <ul className="space-y-4 text-sm">
             <li className="flex items-start gap-3">
               <Icon name="phone" size={20} className="mt-0.5 shrink-0 text-accent" />
