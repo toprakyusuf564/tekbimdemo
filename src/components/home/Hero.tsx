@@ -32,10 +32,10 @@ export default function Hero() {
           <ul className="space-y-4 text-sm">
             <li className="flex items-start gap-3">
               <Icon name="phone" size={20} className="mt-0.5 shrink-0 text-accent" />
-              {/* Dokunma hedefleri en az 24px yüksekliğinde (py-1) */}
+              {/* Dokunma hedefleri en az 44px yüksekliğinde */}
               <span>
-                <a className="block py-1 font-semibold hover:underline" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>
-                <a className="block py-1 text-on-chrome-muted hover:underline" href={`tel:${site.mobile.tel}`}>{site.mobile.display}</a>
+                <a className="flex min-h-11 items-center font-semibold hover:underline" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>
+                <a className="flex min-h-11 items-center text-on-chrome-muted hover:underline" href={`tel:${site.mobile.tel}`}>{site.mobile.display}</a>
               </span>
             </li>
             <li className="flex items-start gap-3">

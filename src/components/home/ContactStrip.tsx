@@ -18,9 +18,9 @@ export default function ContactStrip() {
           <Icon name="phone" size={20} className="mt-0.5 shrink-0 text-accent-text" />
           {/* Dokunma hedefleri en az 24px yüksekliğinde (py-1) */}
           <div>
-            <a className="block py-1 font-semibold hover:underline" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>
-            <a className="block py-1 hover:underline" href={`tel:${site.mobile.tel}`}>{site.mobile.display}</a>
-            <a className="block py-1 text-link hover:underline" href={`mailto:${site.email}`}>{site.email}</a>
+            <a className="flex min-h-11 items-center font-semibold hover:underline" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>
+            <a className="flex min-h-11 items-center hover:underline" href={`tel:${site.mobile.tel}`}>{site.mobile.display}</a>
+            <a className="flex min-h-11 items-center text-link hover:underline" href={`mailto:${site.email}`}>{site.email}</a>
           </div>
         </div>
         <div className="flex items-start gap-3">

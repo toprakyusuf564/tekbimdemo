@@ -64,7 +64,7 @@ export default function IletisimPage() {
                       <p key={l.text}>
                         <a
                           href={l.href}
-                          className="text-link underline-offset-2 hover:underline"
+                          className="inline-flex min-h-11 items-center text-link underline-offset-2 hover:underline"
                           {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                         >
                           {l.text}

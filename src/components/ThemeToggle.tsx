@@ -18,7 +18,7 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label="Açık/koyu temayı değiştir"
-      className="inline-flex h-10 w-10 items-center justify-center rounded-md text-on-chrome hover:bg-white/10"
+      className="inline-flex h-11 w-11 items-center justify-center rounded-md text-on-chrome hover:bg-white/10"
     >
       {/* Ay: açık temada görünür */}
       <svg className="block dark:hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

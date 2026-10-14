@@ -7,7 +7,7 @@ const CYCLE = 3; // saniye / kelime (toplam 12 sn, globals.css'teki kelime-degis
 // Kelimeler aynı grid hücresinde üst üste durur; hücre genişliği en uzun kelimeye göre sabit kalır (CLS 0).
 export default function RotatingWord() {
   return (
-    <p aria-hidden="true" className="mt-4 text-xl font-bold sm:text-2xl">
+    <p aria-hidden="true" className="mt-4 text-[clamp(1.125rem,5.5vw,1.5rem)] font-bold">
       <span className="grid text-accent">
         {words.map((w, i) => (
           <span

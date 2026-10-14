@@ -34,7 +34,7 @@ export default function SolutionGrid({ id, eyebrow, title, items, tone = "bg", a
             {item.available && (
               <Link
                 href={item.href}
-                className="mt-4 inline-block text-sm font-semibold text-link underline-offset-2 hover:underline"
+                className="mt-2 inline-flex min-h-11 items-center text-sm font-semibold text-link underline-offset-2 hover:underline"
               >
                 Detaylar<span className="sr-only">: {item.title}</span> →
               </Link>

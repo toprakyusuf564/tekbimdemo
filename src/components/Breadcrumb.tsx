@@ -11,7 +11,7 @@ export default function Breadcrumb({ trail, className = "" }: Props) {
       <nav aria-label="Sayfa yolu" className={`text-sm ${className}`}>
         <ol className="flex flex-wrap items-center gap-2">
           <li>
-            <Link href="/" className="rounded-sm underline-offset-2 hover:underline">Ana Sayfa</Link>
+            <Link href="/" className="inline-flex min-h-11 items-center rounded-sm underline-offset-2 hover:underline">Ana Sayfa</Link>
           </li>
           {trail.map((t, i) => (
             <li key={t.path} className="flex items-center gap-2">
@@ -19,7 +19,7 @@ export default function Breadcrumb({ trail, className = "" }: Props) {
               {i === trail.length - 1 ? (
                 <span aria-current="page" className="font-semibold">{t.name}</span>
               ) : (
-                <Link href={t.path} className="rounded-sm underline-offset-2 hover:underline">{t.name}</Link>
+                <Link href={t.path} className="inline-flex min-h-11 items-center rounded-sm underline-offset-2 hover:underline">{t.name}</Link>
               )}
             </li>
           ))}

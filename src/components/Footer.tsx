@@ -6,7 +6,8 @@ import { FORMTAKIP_ACTIVE, deviceStatusWhatsappLink, mainNav, site } from "@/con
 // Alt bilgi: sosyal ikonlar, iletişim, çalışma saatleri, hızlı bağlantılar.
 // Banka bilgileri linki: sayfa Faz 2'de gelince eklenecek.
 export default function Footer() {
-  const linkClass = "rounded-sm underline-offset-2 hover:underline";
+  // Dokunma hedefi en az 44px yüksekliğinde
+  const linkClass = "inline-flex min-h-11 items-center rounded-sm underline-offset-2 hover:underline";
   return (
     <footer className="mt-auto bg-chrome text-on-chrome-muted">
       <Container className="grid gap-8 py-10 sm:grid-cols-2 lg:grid-cols-4">
@@ -24,7 +25,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${site.name} ${s.name} sayfası`}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-md text-on-chrome hover:bg-white/10"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-md text-on-chrome hover:bg-white/10"
                 >
                   <Icon name={s.icon as IconName} size={20} />
                 </a>
@@ -35,7 +36,7 @@ export default function Footer() {
 
         <div>
           <h2 className="text-sm font-semibold uppercase tracking-wide text-on-chrome">İletişim</h2>
-          <address className="mt-3 space-y-1 text-sm not-italic">
+          <address className="mt-3 space-y-1 break-words text-sm not-italic">
             <p>{site.address.full}</p>
             <p>
               Tel: <a className={linkClass} href={`tel:${site.phone.tel}`}>{site.phone.display}</a>
@@ -83,7 +84,7 @@ export default function Footer() {
       </Container>
 
       <div className="border-t border-white/10">
-        <Container className="py-4 text-sm">
+        <Container className="py-4 pb-20 text-sm sm:pb-4">
           © {new Date().getFullYear()} {site.name}. Tüm hakları saklıdır.
         </Container>
       </div>

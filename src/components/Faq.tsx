@@ -14,7 +14,7 @@ export default function Faq({ items }: { items: FaqItem[] }) {
     <div className="divide-y divide-border rounded-xl border border-border bg-surface">
       {items.map((item) => (
         <details key={item.question} className="group p-5">
-          <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold [&::-webkit-details-marker]:hidden">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 font-semibold [&::-webkit-details-marker]:hidden">
             <span>
               {item.question}
               {!item.approved && <PendingTag className="ml-2 text-xs" />}
@@ -25,7 +25,7 @@ export default function Faq({ items }: { items: FaqItem[] }) {
           {item.action && (
             <p className="mt-3">
               {item.action.href.startsWith("/") ? (
-                <Link href={item.action.href} className="font-semibold text-link underline-offset-2 hover:underline">
+                <Link href={item.action.href} className="inline-flex min-h-11 items-center font-semibold text-link underline-offset-2 hover:underline">
                   {item.action.label} →
                 </Link>
               ) : (
@@ -33,7 +33,7 @@ export default function Faq({ items }: { items: FaqItem[] }) {
                   href={item.action.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-semibold text-link underline-offset-2 hover:underline"
+                  className="inline-flex min-h-11 items-center font-semibold text-link underline-offset-2 hover:underline"
                 >
                   {item.action.label} →
                 </a>

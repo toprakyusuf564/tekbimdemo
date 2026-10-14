@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 bg-chrome text-on-chrome shadow-sm">
       <Container className="relative flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="flex items-baseline gap-1.5 rounded-md">
+        <Link href="/" className="flex min-h-11 items-baseline gap-1.5 rounded-md py-2">
           <span className="text-xl font-extrabold tracking-tight">tekbim</span>
           <span className="text-sm font-medium text-accent">Bilgisayar</span>
           {/* Erişilebilir ad görünür metni içerir: "tekbim Bilgisayar ana sayfa" */}
